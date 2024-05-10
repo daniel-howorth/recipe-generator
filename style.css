@@ -1,4 +1,9 @@
 :root {
+  --color-primary: hsl(199, 89%, 48%);
+  --color-primary-light: hsl(201, 94%, 86%);
+  --color-primary-dark: hsl(204, 80%, 16%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-off-white: hsl(204, 94%, 94%);
   --color-gray-50: hsl(210deg, 19%, 10%);
   --color-gray-200: hsl(210deg, 15%, 25%);
   --color-gray-400: hsl(210deg, 9%, 45%);
@@ -20,6 +25,7 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: "Poppins", sans-serif;
 }
 
 img,
@@ -43,4 +49,79 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+}
+
+.side-nav-container {
+  background-color: var(--color-primary-dark);
+}
+
+nav {
+  background-color: var(--color-primary-dark);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-primary-light);
+  padding: 0 32px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: sticky;
+  top: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: calc(24 / 16 * 1rem);
+}
+
+ul.main-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 100px;
+}
+
+ul.main-nav li {
+}
+
+ul.second-nav {
+  margin: 0 -32px;
+  text-align: center;
+}
+
+ul.second-nav li {
+  padding: 16px 0;
+  border-top: 1px solid var(--color-gray-400);
+}
+
+button.menu-btn {
+  background-color: var(--color-primary-dark);
+  border: none;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+main {
+  background-color: var(--color-off-white);
+  flex: 5;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
