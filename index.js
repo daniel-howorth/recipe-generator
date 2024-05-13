@@ -23,4 +23,4 @@ const getRecipes = async () => {
   }
 };
 
-// getRecipes();
+getRecipes();
