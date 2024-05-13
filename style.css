@@ -135,6 +135,10 @@ main {
   padding: 32px;
 }
 
+form {
+  font-size: 0.875rem;
+}
+
 label,
 input {
   display: block;
@@ -142,9 +146,8 @@ input {
 
 label {
   font-weight: 600;
-  font-size: 1.2rem;
   color: var(--color-gray-200);
-  margin-bottom: 24px;
+  margin-bottom: calc(24 / 16 * 1rem);
 }
 
 input {
@@ -155,7 +158,6 @@ input {
   font-weight: revert;
   background-color: var(--color-gray-1000);
   color: black;
-  font-size: 1rem;
 }
 
 .macro-input {
@@ -164,9 +166,9 @@ input {
   gap: 16px;
 }
 
-.macro-input:last-of-type {
+/* .macro-input:last-of-type {
   margin-bottom: -24px;
-}
+} */
 
 .macro-input label:last-of-type {
   text-align: right;
@@ -174,6 +176,17 @@ input {
 
 .macro-input label:last-of-type input {
   margin-left: auto;
+}
+
+button.search-btn {
+  width: 100%;
+  padding: calc(14 / 16 * 1rem);
+  border: none;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  border-radius: 100vmax;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .full-width {
