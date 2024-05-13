@@ -1,8 +1,7 @@
-const baseURL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
+const searchBtn = document.querySelector("button.search-btn");
+const cuisineInput = document.querySelector("#input-cuisine");
 
-const url = `${baseURL}/recipes/complexSearch?instructionsRequired=true&addRecipeInformation=true&offset=${Math.floor(
-  Math.random() * 900
-)}&number=1`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInformation=true&number=1`;
 
 const options = {
   method: "GET",
@@ -13,14 +12,33 @@ const options = {
   },
 };
 
-const getRecipes = async () => {
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  getRecipes();
+});
+
+async function getRecipes() {
+  // random offset is generated each time getRecipes is called
+  let url = `${baseURL}&offset=${Math.floor(Math.random() * 900)}`;
+
+  if (cuisineInput.value) {
+    let cuisine = formatInput(cuisineInput.value);
+    url = `${url}&cuisine=${cuisine}`;
+  }
+
   try {
     const response = await fetch(url, options);
-    const results = await response.json();
-    console.log(results);
+    if (response.ok) {
+      const results = await response.json();
+      console.log(results);
+    } else {
+      console.log("there was an error");
+    }
   } catch {
     console.log("there was an error");
   }
-};
+}
 
-getRecipes();
+function formatInput(input) {
+  return input.trim().split(" ").join("");
+}
