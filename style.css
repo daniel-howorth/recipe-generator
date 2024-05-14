@@ -4,12 +4,15 @@
   --color-primary-dark: hsl(204, 80%, 16%);
   --color-white: hsl(0, 0%, 100%);
   --color-off-white: hsl(204, 94%, 94%);
+  --color-accent: hsl(22, 92%, 86%);
   --color-gray-50: hsl(210deg, 19%, 10%);
   --color-gray-200: hsl(210deg, 15%, 25%);
   --color-gray-400: hsl(210deg, 9%, 45%);
   --color-gray-600: hsl(210deg, 12%, 55%);
   --color-gray-800: hsl(210deg, 20%, 77%);
   --color-gray-1000: hsl(210deg, 25%, 96%);
+  --color-invalid: red;
+  --color-invalid-background: hsl(4, 100%, 95%, 0.9);
 }
 
 *,
@@ -86,9 +89,6 @@ ul.main-nav {
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 100px;
-}
-
-ul.main-nav li {
 }
 
 ul.second-nav {
@@ -197,6 +197,51 @@ button.search-btn {
 
 .full-width {
   width: 100%;
+}
+
+input.invalidInput {
+  border: 1px solid var(--color-invalid);
+  background-color: var(--color-invalid-background);
+  color: var(--color-invalid);
+}
+
+input.invalidInput:focus,
+input.invalidInput:active {
+  outline: 1px solid var(--color-invalid);
+}
+
+input.invalidInput:-webkit-autofill,
+input.invalidInput:-webkit-autofill:hover,
+input.invalidInput:-webkit-autofill:focus,
+input.invalidInput:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-invalid-background) inset;
+  -webkit-text-fill-color: var(--color-invalid);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-1000) inset;
+}
+
+span.invalid-label {
+  color: var(--color-invalid);
+  font-weight: 400;
+  margin-top: 4px;
+  display: block;
+}
+
+span.invalid-label.hidden {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button.search-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-accent);
+    color: var(--color-primary-dark);
+  }
 }
 
 .visually-hidden {

@@ -25,8 +25,54 @@ const options = {
 
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  getRecipes();
+  const allInputs = document.querySelectorAll("form input");
+  const inputIsValid = validateInput(allInputs);
+
+  // if (inputIsValid) {
+  //   const url = buildUrl(allInputs)
+  //   getRecipes(url)
+  // }
 });
+
+function validateInput(inputs) {
+  let validStates = [];
+
+  inputs.forEach((input) => {
+    // reset invalid styles first
+    input.classList.remove("invalidInput");
+    document
+      .querySelector(`#${input.id} + .invalid-label`)
+      .classList.add("hidden");
+
+    if (input.value) {
+      // test numeric inputs
+      if (input.classList.contains("number-input")) {
+        if (/^\d+$/.test(input.value)) {
+          validStates.push(true);
+        } else {
+          validStates.push(false);
+          input.classList.add("invalidInput");
+          document
+            .querySelector(`#${input.id} + .invalid-label`)
+            .classList.remove("hidden");
+        }
+      } else {
+        // test text inputs
+        if (/^\w+(,\s?\w+)*$/.test(input.value)) {
+          validStates.push(true);
+        } else {
+          validStates.push(false);
+          input.classList.add("invalidInput");
+          document
+            .querySelector(`#${input.id} + .invalid-label`)
+            .classList.remove("hidden");
+        }
+      }
+    }
+  });
+
+  return validStates.every((state) => state);
+}
 
 async function getRecipes() {
   // random offset is generated each time getRecipes is called
