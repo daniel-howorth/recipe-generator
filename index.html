@@ -50,7 +50,11 @@
                   id="input-cuisine"
                   class="full-width"
                   placeholder="italian, chinese, spanish"
-              /></label>
+                /><span class="invalid-label hidden"
+                  >Please enter one or more comma separated cuisine
+                  values.</span
+                ></label
+              >
               <label for="input-diet"
                 >Diet
                 <input
@@ -58,7 +62,10 @@
                   id="input-diet"
                   class="full-width"
                   placeholder="vegetarian, pescetarian, paleo"
-              /></label>
+                /><span class="invalid-label hidden"
+                  >Please enter one or more comma separated diet values.</span
+                ></label
+              >
               <label for="input-type"
                 >Meal Type
                 <input
@@ -66,7 +73,11 @@
                   id="input-type"
                   class="full-width"
                   placeholder="dinner, lunch, breakfast"
-              /></label>
+                /><span class="invalid-label hidden"
+                  >Please enter one or more comma separated meal type
+                  values.</span
+                ></label
+              >
               <label for="input-intolerances"
                 >Intolerances
                 <input
@@ -74,24 +85,36 @@
                   id="input-intolerances"
                   class="full-width"
                   placeholder="dairy, gluten, sesame"
-              /></label>
+                /><span class="invalid-label hidden"
+                  >Please enter one or more comma separated intolerance
+                  values.</span
+                ></label
+              >
               <div class="macro-input">
                 <label for="input-minCalories"
                   >Min Calories (kcal)
                   <input
                     type="text"
                     id="input-minCalories"
+                    class="number-input"
                     placeholder="150"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
                 <label for="input-maxCalories"
                   >Max Calories (kcal)
                   <input
                     type="text"
                     id="input-maxCalories"
+                    class="number-input"
                     placeholder="850"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
               </div>
               <div class="macro-input">
                 <label for="input-minProtein"
@@ -99,17 +122,25 @@
                   <input
                     type="text"
                     id="input-minProtein"
+                    class="number-input"
                     placeholder="100"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
                 <label for="input-maxProtein"
                   >Max Protein (g)
                   <input
                     type="text"
                     id="input-maxProtein"
+                    class="number-input"
                     placeholder="180"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
               </div>
               <div class="macro-input">
                 <label for="input-minCarbs"
@@ -117,17 +148,25 @@
                   <input
                     type="text"
                     id="input-minCarbs"
+                    class="number-input"
                     placeholder="40"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
                 <label for="input-maxCabs"
                   >Max Carbs (g)
                   <input
                     type="text"
                     id="input-maxCarbs"
+                    class="number-input"
                     placeholder="180"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
               </div>
               <div class="macro-input">
                 <label for="input-minFat"
@@ -135,17 +174,26 @@
                   <input
                     type="text"
                     id="input-minFat"
+                    class="number-input"
                     placeholder="40"
                     size="5"
-                /></label>
+                  /><span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
                 <label for="input-maxFat"
                   >Max Fat (g)
                   <input
                     type="text"
                     id="input-maxFat"
+                    class="number-input"
                     placeholder="80"
                     size="5"
-                /></label>
+                  />
+                  <span class="invalid-label hidden"
+                    >Please enter a positive numeric value</span
+                  ></label
+                >
               </div>
               <button class="search-btn">Search Recipes</button>
             </form>
