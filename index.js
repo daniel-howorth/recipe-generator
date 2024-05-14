@@ -1,7 +1,18 @@
 const searchBtn = document.querySelector("button.search-btn");
 const cuisineInput = document.querySelector("#input-cuisine");
+const dietInput = document.querySelector("#input-diet");
+const mealTypeInput = document.querySelector("#input-type");
+const intolerancesInput = document.querySelector("#input-intolerances");
+const minCaloriesInput = document.querySelector("#input-minCalories");
+const maxCaloriesInput = document.querySelector("#input-maxCalories");
+const minProteinInput = document.querySelector("#input-minProtein");
+const maxProteinInput = document.querySelector("#input-maxProtein");
+const minCarbsInput = document.querySelector("#input-minCarbs");
+const maxCarbsInput = document.querySelector("#input-maxCarbs");
+const minFatInput = document.querySelector("#input-minFat");
+const maxFatInput = document.querySelector("#input-maxFat");
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInformation=true&number=1`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&number=1`;
 
 const options = {
   method: "GET",
@@ -26,16 +37,63 @@ async function getRecipes() {
     url = `${url}&cuisine=${cuisine}`;
   }
 
+  if (dietInput.value) {
+    let diet = formatInput(dietInput.value);
+    url = `${url}&diet=${diet}`;
+  }
+
+  if (mealTypeInput.value) {
+    let mealType = formatInput(mealTypeInput.value);
+    url = `${url}&type=${mealType}`;
+  }
+
+  if (intolerancesInput.value) {
+    let intolerances = formatInput(intolerancesInput.value);
+    url = `${url}&intolerances=${intolerances}`;
+  }
+
+  if (minCaloriesInput.value) {
+    url = `${url}&minCalories=${minCaloriesInput.value}`;
+  }
+
+  if (maxCaloriesInput.value) {
+    url = `${url}&maxCalories=${maxCaloriesInput.value}`;
+  }
+
+  if (minProteinInput.value) {
+    url = `${url}&minProtein=${minProteinInput.value}`;
+  }
+
+  if (maxProteinInput.value) {
+    url = `${url}&maxProtein=${maxProteinInput.value}`;
+  }
+
+  if (minCarbsInput.value) {
+    url = `${url}&minCarbs=${minCarbsInput.value}`;
+  }
+
+  if (maxCarbsInput.value) {
+    url = `${url}&maxCarbs=${maxCarbsInput.value}`;
+  }
+
+  if (minFatInput.value) {
+    url = `${url}&minFat=${minFatInput.value}`;
+  }
+
+  if (maxFatInput.value) {
+    url = `${url}&maxFat=${maxFatInput.value}`;
+  }
+
+  console.log(url);
+
   try {
     const response = await fetch(url, options);
     if (response.ok) {
       const results = await response.json();
       console.log(results);
-    } else {
-      console.log("there was an error");
     }
   } catch {
-    console.log("there was an error");
+    console.log("there was a network error");
   }
 }
 
