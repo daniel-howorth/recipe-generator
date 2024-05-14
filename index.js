@@ -1,16 +1,16 @@
 const searchBtn = document.querySelector("button.search-btn");
-const cuisineInput = document.querySelector("#input-cuisine");
-const dietInput = document.querySelector("#input-diet");
-const mealTypeInput = document.querySelector("#input-type");
-const intolerancesInput = document.querySelector("#input-intolerances");
-const minCaloriesInput = document.querySelector("#input-minCalories");
-const maxCaloriesInput = document.querySelector("#input-maxCalories");
-const minProteinInput = document.querySelector("#input-minProtein");
-const maxProteinInput = document.querySelector("#input-maxProtein");
-const minCarbsInput = document.querySelector("#input-minCarbs");
-const maxCarbsInput = document.querySelector("#input-maxCarbs");
-const minFatInput = document.querySelector("#input-minFat");
-const maxFatInput = document.querySelector("#input-maxFat");
+const cuisineInput = document.querySelector("#cuisine");
+const dietInput = document.querySelector("#diet");
+const mealTypeInput = document.querySelector("#type");
+const intolerancesInput = document.querySelector("#intolerances");
+const minCaloriesInput = document.querySelector("#minCalories");
+const maxCaloriesInput = document.querySelector("#maxCalories");
+const minProteinInput = document.querySelector("#minProtein");
+const maxProteinInput = document.querySelector("#maxProtein");
+const minCarbsInput = document.querySelector("#minCarbs");
+const maxCarbsInput = document.querySelector("#maxCarbs");
+const minFatInput = document.querySelector("#minFat");
+const maxFatInput = document.querySelector("#maxFat");
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&number=1`;
 
@@ -28,14 +28,14 @@ searchBtn.addEventListener("click", (event) => {
   const allInputs = document.querySelectorAll("form input");
   const inputIsValid = validateInput(allInputs);
 
-  // if (inputIsValid) {
-  //   const url = buildUrl(allInputs)
-  //   getRecipes(url)
-  // }
+  if (inputIsValid) {
+    const url = buildUrl(allInputs);
+    getRecipes(url, options);
+  }
 });
 
 function validateInput(inputs) {
-  let validStates = [];
+  let validStates = []; // array of true and false flags
 
   inputs.forEach((input) => {
     // reset invalid styles first
@@ -74,64 +74,20 @@ function validateInput(inputs) {
   return validStates.every((state) => state);
 }
 
-async function getRecipes() {
-  // random offset is generated each time getRecipes is called
+function buildUrl(inputs) {
+  // random offset is generated each time buildUrl is called
   let url = `${baseURL}&offset=${Math.floor(Math.random() * 900)}`;
 
-  if (cuisineInput.value) {
-    let cuisine = formatInput(cuisineInput.value);
-    url = `${url}&cuisine=${cuisine}`;
-  }
+  inputs.forEach((input) => {
+    if (input.value) {
+      url += `&${input.id}=${formatInput(input.value)}`;
+    }
+  });
 
-  if (dietInput.value) {
-    let diet = formatInput(dietInput.value);
-    url = `${url}&diet=${diet}`;
-  }
+  return url;
+}
 
-  if (mealTypeInput.value) {
-    let mealType = formatInput(mealTypeInput.value);
-    url = `${url}&type=${mealType}`;
-  }
-
-  if (intolerancesInput.value) {
-    let intolerances = formatInput(intolerancesInput.value);
-    url = `${url}&intolerances=${intolerances}`;
-  }
-
-  if (minCaloriesInput.value) {
-    url = `${url}&minCalories=${minCaloriesInput.value}`;
-  }
-
-  if (maxCaloriesInput.value) {
-    url = `${url}&maxCalories=${maxCaloriesInput.value}`;
-  }
-
-  if (minProteinInput.value) {
-    url = `${url}&minProtein=${minProteinInput.value}`;
-  }
-
-  if (maxProteinInput.value) {
-    url = `${url}&maxProtein=${maxProteinInput.value}`;
-  }
-
-  if (minCarbsInput.value) {
-    url = `${url}&minCarbs=${minCarbsInput.value}`;
-  }
-
-  if (maxCarbsInput.value) {
-    url = `${url}&maxCarbs=${maxCarbsInput.value}`;
-  }
-
-  if (minFatInput.value) {
-    url = `${url}&minFat=${minFatInput.value}`;
-  }
-
-  if (maxFatInput.value) {
-    url = `${url}&maxFat=${maxFatInput.value}`;
-  }
-
-  console.log(url);
-
+async function getRecipes(url, options) {
   try {
     const response = await fetch(url, options);
     if (response.ok) {
