@@ -250,6 +250,7 @@ span.invalid-label.hidden {
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 /* make fluid? */
@@ -272,6 +273,19 @@ span.invalid-label.hidden {
 
 .ready-in span {
   text-wrap: nowrap;
+}
+
+section.nutritional-content h2 {
+  font-size: calc(24 / 16 * 1rem);
+  font-weight: 400;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  margin-bottom: 16px;
+}
+
+.nutrition-stats-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (hover: hover) and (pointer: fine) {
