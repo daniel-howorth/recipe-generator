@@ -12,7 +12,7 @@ const maxCarbsInput = document.querySelector("#maxCarbs");
 const minFatInput = document.querySelector("#minFat");
 const maxFatInput = document.querySelector("#maxFat");
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&number=1`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 
 const options = {
   method: "GET",
