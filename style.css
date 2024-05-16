@@ -276,7 +276,7 @@ span.invalid-label.hidden {
 }
 
 section.nutritional-content {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 section.nutritional-content h2 {
@@ -324,6 +324,7 @@ section.ingredients {
   background-color: var(--color-accent);
   padding: 24px;
   border-radius: 20px;
+  margin-bottom: 32px;
 }
 
 .ingredients-header {
@@ -346,12 +347,42 @@ section.ingredients ul {
   margin-left: 24px;
 }
 
+.instructions-header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.instructions-header h2 {
+  font-size: calc(24 / 16 * 1rem);
+  font-weight: 400;
+}
+
+button.toggle-content-btn {
+  border: none;
+  background-color: var(--color-white);
+}
+
+.instructions-header button.toggle-content-btn {
+  width: 40px;
+  height: 40px;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  button.search-btn:hover {
+  button {
     cursor: pointer;
+  }
+  button.search-btn:hover {
     background-color: var(--color-accent);
     color: var(--color-primary-dark);
   }
+}
+
+.hidden {
+  display: none;
 }
 
 .visually-hidden {
