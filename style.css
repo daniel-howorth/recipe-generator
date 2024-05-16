@@ -247,10 +247,11 @@ span.invalid-label.hidden {
 
 .recipe-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 /* make fluid? */
@@ -259,7 +260,6 @@ span.invalid-label.hidden {
 }
 
 .ready-in {
-  margin-left: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -285,7 +285,35 @@ section.nutritional-content h2 {
 
 .nutrition-stats-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nutrition-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary-light);
+  padding: 8px;
+  border-radius: 100vmax;
+}
+
+.nutrition-stat-content {
+  height: calc(60 / 16 * 1rem);
+  width: calc(60 / 16 * 1rem);
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.nutrition-stat-label {
+  font-size: calc(14 / 16 * 1rem);
+  margin-bottom: 16px;
 }
 
 @media (hover: hover) and (pointer: fine) {
