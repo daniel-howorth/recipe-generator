@@ -341,18 +341,18 @@ section.ingredients {
   margin-bottom: 0;
 }
 
-.recipe-section-header {
-  padding-bottom: 8px;
+.section-header {
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 24px;
   margin-bottom: 1rem;
 }
 
-.recipe-section-header h2 {
-  font-size: calc(24 / 16 * 1rem);
-  font-weight: 400;
+.section-header h2 {
+  font-size: calc(20 / 16 * 1rem);
+  font-weight: 600;
 }
 
 button.toggle-content-btn {
@@ -360,7 +360,7 @@ button.toggle-content-btn {
   background-color: var(--color-white);
 }
 
-.recipe-section-header button.toggle-content-btn {
+.section-header button.toggle-content-btn {
   width: calc(40 / 16 * 1rem);
   height: calc(40 / 16 * 1rem);
 }
