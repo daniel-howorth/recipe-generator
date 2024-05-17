@@ -207,17 +207,27 @@
                 alt=""
               />
             </div>
-            <div class="recipe-header">
+            <header class="recipe-header">
               <h1>Title of Recipe</h1>
               <div class="ready-in">
                 <div class="visually-hidden">ready in</div>
                 <img src="assets/clock.svg" alt="clock" class="clock-icon" />
                 <span>15 mins</span>
               </div>
-            </div>
+            </header>
             <section class="nutritional-content">
-              <h2>Nutrition per serving</h2>
-              <div class="nutrition-stats-container">
+              <header class="recipe-section-header">
+                <h2>Nutrition per serving</h2>
+                <button
+                  class="toggle-content-btn"
+                  data-toggle="nutritional-content"
+                >
+                  <div class="visually-hidden">Toggle nutritional content.</div>
+                  <img src="assets/chevron-up.svg" alt="chevron" />
+                </button>
+              </header>
+
+              <div id="nutritional-content">
                 <div class="nutrition-stat">
                   <div class="nutrition-stat-content">500</div>
                   <span class="nutrition-stat-label">Calories</span>
@@ -246,32 +256,55 @@
             </section>
 
             <section class="ingredients">
-              <header class="ingredients-header">
+              <header class="recipe-section-header">
                 <h2>Ingredients</h2>
-                <span class="servings">4 servings</span>
-              </header>
-              <ul>
-                <li>ingredient</li>
-                <li>ingredient</li>
-                <li>ingredient</li>
-                <li>ingredient</li>
-                <li>ingredient</li>
-              </ul>
-            </section>
-            <section class="instructions">
-              <header class="instructions-header">
-                <h2>Instructions</h2>
-                <button class="toggle-content-btn" id="toggle-instructions">
+                <button
+                  class="toggle-content-btn"
+                  data-toggle="ingredients-content"
+                >
                   <div class="visually-hidden">Toggle instructions.</div>
                   <img src="assets/chevron-down.svg" alt="chevron" />
                 </button>
               </header>
-              <ol class="instructions-content hidden">
-                <li>instruction</li>
-                <li>instruction</li>
-                <li>instruction</li>
-                <li>instruction</li>
-                <li>instruction</li>
+              <div class="hidden" id="ingredients-content">
+                <span>4 servings</span>
+                <ul class="ingredients-list">
+                  <li>1 tsp ancho chili powder</li>
+                  <li>1/4 cup cilantro leaves (optional)</li>
+                  <li>1 cucumber, peeled and chopped</li>
+                  <li>4 oz Queso Fresco or Feta cheese</li>
+                  <li>1 1/2 cups fresh corn</li>
+                </ul>
+              </div>
+            </section>
+            <section class="instructions">
+              <header class="recipe-section-header">
+                <h2>Instructions</h2>
+                <button
+                  class="toggle-content-btn"
+                  data-toggle="instructions-content"
+                >
+                  <div class="visually-hidden">Toggle instructions.</div>
+                  <img src="assets/chevron-down.svg" alt="chevron" />
+                </button>
+              </header>
+              <ol class="hidden" id="instructions-content">
+                <li>
+                  Bring a large pot of water to a boil with sweet potatoes in it
+                  and cook for about 15 minutes until fork tender.
+                </li>
+                <li>
+                  Drain and set aside.While potatoes cook, saute shallots with
+                  olive oil in a medium pan over medium heat until softened and
+                  just starting the brown (about 5-7 minutes).
+                </li>
+                <li>
+                  Combine cooked potatoes, sauteed shallots, spinach, goat
+                  cheese, milk and thyme if using in a medium bowl.Mash together
+                  with a potato masher or fork until well combined.
+                </li>
+                <li>Add salt & pepper to taste and mash again.</li>
+                <li>Serve warm.</li>
               </ol>
             </section>
           </article>

@@ -11,11 +11,7 @@ const minCarbsInput = document.querySelector("#minCarbs");
 const maxCarbsInput = document.querySelector("#maxCarbs");
 const minFatInput = document.querySelector("#minFat");
 const maxFatInput = document.querySelector("#maxFat");
-const toggleInstructionsBtn = document.querySelector("#toggle-instructions");
-const instructionsContent = document.querySelector(".instructions-content");
-const toggleInstructionsBtnIcon = document.querySelector(
-  "#toggle-instructions img"
-);
+const toggleButtons = document.querySelectorAll(".toggle-content-btn");
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 
@@ -108,16 +104,19 @@ function formatInput(input) {
   return input.trim().split(" ").join("");
 }
 
-function toggleInstructions() {
-  if (toggleInstructionsBtnIcon.getAttribute("src").includes("chevron-down")) {
-    toggleInstructionsBtnIcon.setAttribute("src", "assets/chevron-up.svg");
+function toggleContent() {
+  const content = document.querySelector(`#${this.dataset.toggle}`);
+  const toggleIcon = this.querySelector("img");
+
+  if (toggleIcon.getAttribute("src").includes("chevron-down")) {
+    toggleIcon.setAttribute("src", "assets/chevron-up.svg");
   } else {
-    toggleInstructionsBtnIcon.setAttribute("src", "assets/chevron-down.svg");
+    toggleIcon.setAttribute("src", "assets/chevron-down.svg");
   }
 
-  // console.log(toggleInstructionsBtnIcon.getAttribute("src"));
-
-  instructionsContent.classList.toggle("hidden");
+  content.classList.toggle("hidden");
 }
 
-toggleInstructionsBtn.addEventListener("click", toggleInstructions);
+toggleButtons.forEach((button) =>
+  button.addEventListener("click", toggleContent)
+);
