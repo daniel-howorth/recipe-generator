@@ -32,6 +32,7 @@ searchBtn.addEventListener("click", (event) => {
   if (inputIsValid) {
     const url = buildUrl(allInputs);
     getRecipes(url, options);
+    hideSearchForm();
   }
 });
 
@@ -120,3 +121,11 @@ function toggleContent() {
 toggleButtons.forEach((button) =>
   button.addEventListener("click", toggleContent)
 );
+
+function hideSearchForm() {
+  document.querySelector("#nutritional-requirements").classList.add("hidden");
+  document
+    .querySelector("button[data-toggle='nutritional-requirements'] img")
+    .setAttribute("src", "assets/chevron-down.svg");
+  window.scrollTo(0, 0);
+}

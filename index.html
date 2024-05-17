@@ -42,7 +42,17 @@
         </div>
         <div class="card-wrapper">
           <article class="card">
-            <form>
+            <header class="section-header">
+              <h2>Nutritional Requirements</h2>
+              <button
+                class="toggle-content-btn"
+                data-toggle="nutritional-requirements"
+              >
+                <div class="visually-hidden">Toggle nutritional content.</div>
+                <img src="assets/chevron-up.svg" alt="chevron" />
+              </button>
+            </header>
+            <form id="nutritional-requirements">
               <label for="cuisine"
                 >Cuisine
                 <input
@@ -216,7 +226,7 @@
               </div>
             </header>
             <section class="nutritional-content">
-              <header class="recipe-section-header">
+              <header class="section-header">
                 <h2>Nutrition per serving</h2>
                 <button
                   class="toggle-content-btn"
@@ -256,7 +266,7 @@
             </section>
 
             <section class="ingredients">
-              <header class="recipe-section-header">
+              <header class="section-header">
                 <h2>Ingredients</h2>
                 <button
                   class="toggle-content-btn"
@@ -278,7 +288,7 @@
               </div>
             </section>
             <section class="instructions">
-              <header class="recipe-section-header">
+              <header class="section-header">
                 <h2>Instructions</h2>
                 <button
                   class="toggle-content-btn"
