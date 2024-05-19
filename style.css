@@ -122,17 +122,16 @@ main {
 }
 
 /* make text fluid? */
-.title {
+.page-header {
   text-align: center;
   line-height: 1.75;
 }
 
-.title p {
+.page-header p {
   color: var(--color-gray-200);
 }
 
 .card-wrapper {
-  padding: 0 32px;
   width: clamp(500px, 60%, 700px);
   max-width: 100%;
 }
@@ -275,7 +274,8 @@ span.invalid-label.hidden {
   text-wrap: nowrap;
 }
 
-section.nutritional-content {
+section.nutritional-content,
+section.ingredients {
   margin-bottom: 2rem;
 }
 
@@ -312,10 +312,7 @@ section.nutritional-content {
   margin-bottom: 16px;
 }
 
-section.ingredients {
-  margin-bottom: 2rem;
-}
-
+/* check border radius response to scaling */
 #ingredients-content {
   background-color: var(--color-accent);
   padding: 24px;
@@ -360,7 +357,7 @@ button.toggle-content-btn {
   background-color: var(--color-white);
 }
 
-.section-header button.toggle-content-btn {
+button.toggle-content-btn {
   width: calc(40 / 16 * 1rem);
   height: calc(40 / 16 * 1rem);
 }
