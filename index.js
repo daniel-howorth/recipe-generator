@@ -1,16 +1,16 @@
 const searchBtn = document.querySelector("button.search-btn");
-const cuisineInput = document.querySelector("#cuisine");
-const dietInput = document.querySelector("#diet");
-const mealTypeInput = document.querySelector("#type");
-const intolerancesInput = document.querySelector("#intolerances");
-const minCaloriesInput = document.querySelector("#minCalories");
-const maxCaloriesInput = document.querySelector("#maxCalories");
-const minProteinInput = document.querySelector("#minProtein");
-const maxProteinInput = document.querySelector("#maxProtein");
-const minCarbsInput = document.querySelector("#minCarbs");
-const maxCarbsInput = document.querySelector("#maxCarbs");
-const minFatInput = document.querySelector("#minFat");
-const maxFatInput = document.querySelector("#maxFat");
+// const cuisineInput = document.querySelector("#cuisine");
+// const dietInput = document.querySelector("#diet");
+// const mealTypeInput = document.querySelector("#type");
+// const intolerancesInput = document.querySelector("#intolerances");
+// const minCaloriesInput = document.querySelector("#minCalories");
+// const maxCaloriesInput = document.querySelector("#maxCalories");
+// const minProteinInput = document.querySelector("#minProtein");
+// const maxProteinInput = document.querySelector("#maxProtein");
+// const minCarbsInput = document.querySelector("#minCarbs");
+// const maxCarbsInput = document.querySelector("#maxCarbs");
+// const minFatInput = document.querySelector("#minFat");
+// const maxFatInput = document.querySelector("#maxFat");
 const recipeCard = document.querySelector(".recipe");
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
@@ -96,7 +96,7 @@ async function getRecipes(url, options) {
     const response = await fetch(url, options);
     if (response.ok) {
       const results = await response.json();
-      return results;
+      return results || {};
     }
   } catch {
     console.log("there was a network error");
@@ -142,9 +142,9 @@ function displayRecipe(data) {
     recipeCard.removeChild(recipeCard.firstChild);
   }
 
-  // if 0 results, display message.
-  if (data.totalResults === 0) {
-    const noResultsMsg = `<div style="text-align: center;"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
+  // if no results, display message.
+  if (!data.results?.length) {
+    const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
     recipeCard.innerHTML = noResultsMsg;
     return;
   }
@@ -153,34 +153,51 @@ function displayRecipe(data) {
 
   const title = data.results[0].title || "Recipe";
 
-  const readyIn = data.results[0].readyInMinutes || "";
+  const readyIn = data.results[0].readyInMinutes;
 
   // clean nutrients data
-  const nutrients = data.results[0].nutrition.nutrients;
+  const nutrients = data.results[0].nutrition?.nutrients || [];
 
   let calories = nutrients.find((nutrient) => nutrient.name === "Calories");
-  calories = calories ? Math.round(calories.amount) : "n/a";
+  calories =
+    calories?.amount && isNumber(calories.amount)
+      ? Math.round(calories.amount)
+      : "n/a";
 
   let protein = nutrients.find((nutrient) => nutrient.name === "Protein");
-  protein = protein ? `${Math.round(protein.amount)}g` : "n/a";
+  protein =
+    protein?.amount && isNumber(protein.amount)
+      ? `${Math.round(protein.amount)}g`
+      : "n/a";
 
   let carbs = nutrients.find((nutrient) => nutrient.name === "Carbohydrates");
-  carbs = carbs ? `${Math.round(carbs.amount)}g` : "n/a";
+  carbs =
+    carbs?.amount && isNumber(carbs.amount)
+      ? `${Math.round(carbs.amount)}g`
+      : "n/a";
 
   let fat = nutrients.find((nutrient) => nutrient.name === "Fat");
-  fat = fat ? `${Math.round(fat.amount)}g` : "n/a";
+  fat =
+    fat?.amount && isNumber(fat.amount) ? `${Math.round(fat.amount)}g` : "n/a";
 
   let fiber = nutrients.find((nutrient) => nutrient.name === "Fiber");
-  fiber = fiber ? `${Math.round(fiber.amount)}g` : "n/a";
+  fiber =
+    fiber?.amount && isNumber(fiber.amount)
+      ? `${Math.round(fiber.amount)}g`
+      : "n/a";
 
   let sugar = nutrients.find((nutrient) => nutrient.name === "Sugar");
-  sugar = sugar ? `${Math.round(sugar.amount)}g` : "n/a";
+  sugar =
+    sugar?.amount && isNumber(sugar.amount)
+      ? `${Math.round(sugar.amount)}g`
+      : "n/a";
 
   const servings = data.results[0].servings;
 
   const ingredientsList = data.results[0].extendedIngredients || [];
 
-  const instructionsList = data.results[0].analyzedInstructions[0].steps || [];
+  const instructionsList =
+    data.results[0].analyzedInstructions?.[0]?.steps || [];
 
   const recipeImgHTML = `
     <img
@@ -323,6 +340,10 @@ function displayRecipe(data) {
   recipeCard.appendChild(instructionsSection);
 
   applyToggleContentEventListeners();
+}
+
+function isNumber(value) {
+  return typeof value === "number";
 }
 
 applyToggleContentEventListeners();

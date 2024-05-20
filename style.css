@@ -388,6 +388,10 @@ button.toggle-content-btn {
   display: none !important;
 }
 
+.centered-text {
+  text-align: center;
+}
+
 .visually-hidden {
   position: absolute;
   overflow: hidden;
