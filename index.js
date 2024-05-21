@@ -1,16 +1,4 @@
 const searchBtn = document.querySelector("button.search-btn");
-// const cuisineInput = document.querySelector("#cuisine");
-// const dietInput = document.querySelector("#diet");
-// const mealTypeInput = document.querySelector("#type");
-// const intolerancesInput = document.querySelector("#intolerances");
-// const minCaloriesInput = document.querySelector("#minCalories");
-// const maxCaloriesInput = document.querySelector("#maxCalories");
-// const minProteinInput = document.querySelector("#minProtein");
-// const maxProteinInput = document.querySelector("#maxProtein");
-// const minCarbsInput = document.querySelector("#minCarbs");
-// const maxCarbsInput = document.querySelector("#maxCarbs");
-// const minFatInput = document.querySelector("#minFat");
-// const maxFatInput = document.querySelector("#maxFat");
 const recipeCard = document.querySelector(".recipe");
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
@@ -313,6 +301,7 @@ function displayRecipe(data) {
 
   instructionsSectionHTML += `</ol>`;
 
+  // build recipe card
   const recipeImg = document.createElement("div");
   recipeImg.classList.add("recipe-img-wrapper");
   recipeImg.innerHTML = recipeImgHTML;
