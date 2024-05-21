@@ -31,6 +31,16 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
 img,
 svg {
   display: block;
@@ -44,16 +54,6 @@ select {
   font: inherit;
 }
 
-/* p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-} */
-
 .app-wrapper {
   min-height: 100vh;
   min-height: 100dvh;
@@ -66,10 +66,9 @@ h6 {
 
 nav {
   background-color: var(--color-primary-dark);
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   color: var(--color-primary-light);
   padding: 0 32px;
   min-height: 100vh;
@@ -88,7 +87,7 @@ ul.main-nav {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: 100px;
+  margin: auto 0;
 }
 
 ul.second-nav {
@@ -101,13 +100,16 @@ ul.second-nav li {
   border-top: 1px solid var(--color-gray-400);
 }
 
-button.menu-btn {
+.nav-buttons-group {
+  display: none;
+}
+
+button.nav-btn {
+  display: none;
   background-color: var(--color-primary-dark);
   border: none;
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-  visibility: hidden;
+  height: calc(50 / 16 * 1rem);
+  width: calc(50 / 16 * 1rem);
 }
 
 main {
@@ -118,13 +120,19 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap: 40px;
-  padding: 48px 32px;
+  padding: 48px 16px;
 }
 
-/* make text fluid? */
 .page-header {
   text-align: center;
-  line-height: 1.75;
+  line-height: 1.5;
+}
+
+.page-header h1 {
+  font-size: clamp(2.5rem, 2.6vw + 1.75rem, 3.5rem);
+  min-height: 0vh;
+  margin-bottom: 16px;
+  color: var(--color-primary-dark);
 }
 
 .page-header p {
@@ -146,6 +154,15 @@ main {
 
 form {
   font-size: 0.875rem;
+}
+
+#nutritional-requirements {
+  margin-top: 16px;
+}
+
+.form-instruction {
+  margin-bottom: 16px;
+  color: var(--color-gray-200);
 }
 
 label,
@@ -255,7 +272,7 @@ span.invalid-label.hidden {
 
 /* make fluid? */
 .recipe-header h1 {
-  font-size: calc(40 / 16 * 1rem);
+  font-size: 2rem;
 }
 
 .ready-in {
@@ -341,10 +358,9 @@ section.ingredients {
 .section-header {
   border-bottom: 1px solid black;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 24px;
   margin-bottom: 1rem;
+  flex-wrap: wrap-reverse;
 }
 
 .section-header h2 {
@@ -355,9 +371,7 @@ section.ingredients {
 button.toggle-content-btn {
   border: none;
   background-color: var(--color-white);
-}
-
-button.toggle-content-btn {
+  margin-left: auto;
   width: calc(40 / 16 * 1rem);
   height: calc(40 / 16 * 1rem);
 }
@@ -375,12 +389,16 @@ button.toggle-content-btn {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  button {
+  button:hover {
     cursor: pointer;
   }
   button.search-btn:hover {
     background-color: var(--color-accent);
     color: var(--color-primary-dark);
+  }
+
+  button.nav-btn:hover img {
+    filter: hue-rotate(204deg);
   }
 }
 
@@ -401,4 +419,51 @@ button.toggle-content-btn {
   margin: -1px;
   padding: 0;
   border: 0;
+}
+
+@media (max-width: calc(1100 / 16 * 1rem)) {
+  nav {
+    padding: 8px;
+  }
+
+  ul.main-nav {
+    display: none;
+  }
+
+  ul.second-nav {
+    display: none;
+  }
+
+  button.nav-btn {
+    display: revert;
+  }
+
+  .nav-buttons-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 8px;
+  }
+}
+
+@media (max-width: calc(700 / 16 * 1rem)) {
+  .app-wrapper {
+    flex-direction: column;
+  }
+
+  nav {
+    min-height: revert;
+    flex-direction: row;
+  }
+
+  .nav-buttons-group {
+    flex-direction: row;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: calc(400 / 16 * 1rem)) {
+  .recipe-header h1 {
+    font-size: 1.75rem;
+  }
 }

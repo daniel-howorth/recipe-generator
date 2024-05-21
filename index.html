@@ -16,10 +16,21 @@
     <div class="app-wrapper">
       <div class="side-nav-container">
         <nav class="side-nav">
-          <button class="menu-btn">
+          <button class="nav-btn">
             <img src="assets/menu.svg" alt="menu button" />
             <div class="visually-hidden">menu button</div>
           </button>
+          <div class="nav-buttons-group">
+            <button class="nav-btn">
+              <img src="assets/profile.svg" alt="profile button" />
+              <div class="visually-hidden">profile button</div>
+            </button>
+            <button class="nav-btn">
+              <img src="assets/log-out.svg" alt="log out button" />
+              <div class="visually-hidden">log out button</div>
+            </button>
+          </div>
+
           <ul class="main-nav">
             <li>Search Recipes</li>
             <li>Calculate Macros</li>
@@ -35,10 +46,7 @@
       <main>
         <header class="page-header">
           <h1>Search Recipes</h1>
-          <p>
-            Search for recipes based on your nutritional requirements. Leave all
-            fields blank to generate random recipes.
-          </p>
+          <p>Search for recipes based on your nutritional requirements.</p>
         </header>
         <div class="card-wrapper">
           <article class="card">
@@ -56,7 +64,12 @@
                 />
               </button>
             </header>
+
             <form id="nutritional-requirements">
+              <p class="form-instruction">
+                Fill in any of your nutritional requirements, or leave all
+                fields blank to generate random recipes.
+              </p>
               <label for="cuisine"
                 >Cuisine
                 <input
