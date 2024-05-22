@@ -66,7 +66,6 @@ select {
 
 nav {
   background-color: var(--color-primary-dark);
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
   color: var(--color-primary-light);
@@ -132,7 +131,6 @@ main {
   font-size: clamp(2.5rem, 2.6vw + 1.75rem, 3.5rem);
   min-height: 0vh;
   margin-bottom: 16px;
-  color: var(--color-primary-dark);
 }
 
 .page-header p {
@@ -465,5 +463,78 @@ button.toggle-content-btn {
 @media (max-width: calc(400 / 16 * 1rem)) {
   .recipe-header h1 {
     font-size: 1.75rem;
+  }
+}
+
+/* styles for extremely small screens */
+@media (max-width: calc(250 / 16 * 1rem)) {
+  .card {
+    padding: 8px;
+  }
+
+  #ingredients-content {
+    padding: 24px 8px;
+  }
+
+  #instructions-content {
+    padding-left: 0;
+  }
+
+  .ingredients-list {
+    margin-left: 0;
+  }
+
+  .recipe-img-wrapper {
+    margin: -8px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 1rem;
+  }
+
+  .recipe-header h1 {
+    font-size: 1rem;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  button.toggle-content-btn {
+    width: calc(30 / 16 * 1rem);
+    height: calc(30 / 16 * 1rem);
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .macro-input {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .macro-input label:last-of-type {
+    text-align: left;
+  }
+
+  .macro-input label:last-of-type input {
+    margin-left: 0;
+  }
+
+  button.search-btn {
+    padding: calc(8 / 16 * 1rem);
+  }
+}
+
+@media (max-width: calc(200 / 16 * 1rem)) {
+  nav {
+    flex-direction: column;
+  }
+
+  .nav-buttons-group {
+    flex-direction: column;
+    margin: 0;
   }
 }
