@@ -138,8 +138,9 @@ main {
 }
 
 .card-wrapper {
-  width: clamp(500px, 60%, 700px);
-  max-width: 100%;
+  /* width: clamp(300px, 90%, 500px); */
+  /* max-width: 100%; */
+  width: min(calc(500 / 16 * 1rem), 95vw);
 }
 
 .card {
@@ -268,7 +269,6 @@ span.invalid-label.hidden {
   flex-wrap: wrap;
 }
 
-/* make fluid? */
 .recipe-header h1 {
   font-size: 2rem;
 }
@@ -327,7 +327,6 @@ section.ingredients {
   margin-bottom: 16px;
 }
 
-/* check border radius response to scaling */
 #ingredients-content {
   background-color: var(--color-accent);
   padding: 24px;
