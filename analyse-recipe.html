@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyse Recipes</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="analyse-recipe.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <div class="side-nav-container">
+        <nav class="side-nav">
+          <button class="nav-btn">
+            <img src="assets/menu.svg" alt="menu button" />
+            <div class="visually-hidden">menu button</div>
+          </button>
+          <div class="nav-buttons-group">
+            <button class="nav-btn">
+              <img src="assets/profile.svg" alt="profile button" />
+              <div class="visually-hidden">profile button</div>
+            </button>
+            <button class="nav-btn">
+              <img src="assets/log-out.svg" alt="log out button" />
+              <div class="visually-hidden">log out button</div>
+            </button>
+          </div>
+
+          <ul class="main-nav">
+            <li>Search Recipes</li>
+            <li>Calculate Macros</li>
+            <li class="active-page-link">Analyse Recipes</li>
+            <li>Saved Recipes</li>
+          </ul>
+          <ul class="second-nav">
+            <li>Profile</li>
+            <li>Logout</li>
+          </ul>
+        </nav>
+      </div>
+      <main>
+        <header class="page-header">
+          <h1>Analyse Recipes</h1>
+          <p>Get a nutritional breakdown of any recipe.</p>
+        </header>
+        <div class="card-wrapper">
+          <article class="card">
+            <form>
+              <p class="form-instruction">
+                Enter each ingredient and its quantity from the recipe you want
+                to analyse, in a comma separated list. If you don't provide the
+                quantity, 100 grams will be used for that ingredient.
+              </p>
+              <label for="recipeToAnalyse"
+                >Recipe
+                <input
+                  type="text"
+                  id="recipeToAnalyse"
+                  class="full-width"
+                  placeholder="1lb beef brisket, 10z white onion, 3 tomatoes"
+                /><span class="invalid-label hidden"
+                  >Please enter one or more comma separated cuisine
+                  values.</span
+                ></label
+              >
+              <button class="search-btn">Analyse Recipe</button>
+            </form>
+            <div class="nutritional-breakdown">
+              <h1>Nutritional Breakdown</h1>
+              <p>Recipe:</p>
+            </div>
+          </article>
+        </div>
+        <!-- <div class="recipe-wrapper card-wrapper hidden">
+          <article class="recipe card"></article>
+        </div> -->
+      </main>
+    </div>
+    <script src="analyse-recipes.js"></script>
+  </body>
+</html>
