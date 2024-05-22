@@ -89,6 +89,21 @@ ul.main-nav {
   margin: auto 0;
 }
 
+ul.main-nav li {
+  padding-right: 32px;
+}
+
+ul.main-nav .active-page-link {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 32px;
+  margin-left: -32px;
+  border-top-right-radius: 100vmax;
+  border-bottom-right-radius: 100vmax;
+}
+
 ul.second-nav {
   margin: 0 -32px;
   text-align: center;
@@ -96,7 +111,7 @@ ul.second-nav {
 
 ul.second-nav li {
   padding: 16px 0;
-  border-top: 1px solid var(--color-gray-400);
+  border-top: 1px solid var(--color-primary-light);
 }
 
 .nav-buttons-group {
@@ -385,20 +400,6 @@ button.toggle-content-btn {
   margin-bottom: 0;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  button:hover {
-    cursor: pointer;
-  }
-  button.search-btn:hover {
-    background-color: var(--color-accent);
-    color: var(--color-primary-dark);
-  }
-
-  button.nav-btn:hover img {
-    filter: hue-rotate(204deg);
-  }
-}
-
 .hidden {
   display: none !important;
 }
@@ -416,6 +417,38 @@ button.toggle-content-btn {
   margin: -1px;
   padding: 0;
   border: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    cursor: pointer;
+  }
+  button.search-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary-dark);
+  }
+
+  button.nav-btn:hover img {
+    filter: hue-rotate(204deg);
+  }
+
+  nav li:hover {
+    cursor: pointer;
+  }
+
+  nav ul.main-nav li:not(.active-page-link):hover {
+    color: var(--color-accent);
+  }
+
+  nav ul.second-nav li:hover {
+    background-color: var(--color-accent);
+    border-top-color: var(--color-accent);
+    color: var(--color-primary-dark);
+  }
+
+  nav ul.second-nav li:hover + li {
+    border-top-color: var(--color-accent);
+  }
 }
 
 @media (max-width: calc(1100 / 16 * 1rem)) {
