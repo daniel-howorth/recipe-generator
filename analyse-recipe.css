@@ -1,0 +1,11 @@
+.nutritional-breakdown h1 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+  font-size: calc(20 / 16 * 1rem);
+  font-weight: 600;
+}
+
+.nutritional-breakdown p {
+  color: var(--color-gray-200);
+  font-size: 0.875rem;
+}
