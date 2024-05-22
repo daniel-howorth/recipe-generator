@@ -85,9 +85,12 @@ async function getRecipes(url, options) {
     if (response.ok) {
       const results = await response.json();
       return results || {};
+    } else {
+      throw new Error(response.status);
     }
-  } catch {
-    console.log("there was a network error");
+  } catch (error) {
+    console.error("Fetch", error);
+    window.alert("Sorry, there was a problem.");
   }
 }
 
@@ -131,7 +134,7 @@ function displayRecipe(data) {
   }
 
   // if no results, display message.
-  if (!data.results?.length) {
+  if (!data?.results?.length) {
     const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
     recipeCard.innerHTML = noResultsMsg;
     return;
