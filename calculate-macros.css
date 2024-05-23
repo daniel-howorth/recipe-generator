@@ -1,0 +1,14 @@
+.card-wrapper {
+  width: min(calc(300 / 16 * 1rem), 95vw);
+}
+
+select,
+input {
+  border-radius: revert;
+  padding: 8px;
+  width: 100%;
+}
+
+input {
+  padding: 8px 12px;
+}
