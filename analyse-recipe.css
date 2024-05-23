@@ -8,4 +8,13 @@
 .nutritional-breakdown p {
   color: var(--color-gray-200);
   font-size: 0.875rem;
+  margin-bottom: 32px;
+}
+
+.nutritional-breakdown .centered-text {
+  margin-top: 32px;
+}
+
+form .form-instruction {
+  margin-bottom: 1rem;
 }

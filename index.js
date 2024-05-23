@@ -1,3 +1,5 @@
+import { isNumber } from "./utils";
+
 const searchBtn = document.querySelector("button.search-btn");
 const recipeCard = document.querySelector(".recipe");
 
@@ -332,10 +334,6 @@ function displayRecipe(data) {
   recipeCard.appendChild(instructionsSection);
 
   applyToggleContentEventListeners();
-}
-
-function isNumber(value) {
-  return typeof value === "number";
 }
 
 applyToggleContentEventListeners();
