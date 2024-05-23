@@ -1,4 +1,4 @@
-import { isNumber } from "./utils";
+import { isNumber } from "./utils.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeCard = document.querySelector(".recipe");

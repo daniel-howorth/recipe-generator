@@ -153,8 +153,6 @@ main {
 }
 
 .card-wrapper {
-  /* width: clamp(300px, 90%, 500px); */
-  /* max-width: 100%; */
   width: min(calc(500 / 16 * 1rem), 95vw);
 }
 
@@ -180,7 +178,8 @@ form {
 }
 
 label,
-input {
+input,
+select {
   display: block;
 }
 
@@ -190,7 +189,8 @@ label {
   margin-bottom: calc(24 / 16 * 1rem);
 }
 
-input {
+input,
+select {
   margin-top: 8px;
   padding: 8px 16px;
   border-radius: 100vmax;

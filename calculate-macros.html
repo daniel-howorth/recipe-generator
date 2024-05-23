@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Macros</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="calculate-macros.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <div class="side-nav-container">
+        <nav class="side-nav">
+          <button class="nav-btn">
+            <img src="assets/menu.svg" alt="menu button" />
+            <div class="visually-hidden">menu button</div>
+          </button>
+          <div class="nav-buttons-group">
+            <button class="nav-btn">
+              <img src="assets/profile.svg" alt="profile button" />
+              <div class="visually-hidden">profile button</div>
+            </button>
+            <button class="nav-btn">
+              <img src="assets/log-out.svg" alt="log out button" />
+              <div class="visually-hidden">log out button</div>
+            </button>
+          </div>
+
+          <ul class="main-nav">
+            <li>Search Recipes</li>
+            <li class="active-page-link">Calculate Macros</li>
+            <li>Analyse Recipes</li>
+            <li>Saved Recipes</li>
+          </ul>
+          <ul class="second-nav">
+            <li>Profile</li>
+            <li>Logout</li>
+          </ul>
+        </nav>
+      </div>
+      <main>
+        <header class="page-header">
+          <h1>Calculate Macro Targets</h1>
+          <p>Calculate your daily macro targets based on your fitness goals.</p>
+        </header>
+        <div class="card-wrapper">
+          <article class="card">
+            <form>
+              <!-- <p class="form-instruction">This is how you complete the form.</p> -->
+              <label for="genderInput"
+                >Gender
+                <select id="genderInput" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label for="weightInput"
+                >Weight (kg)
+                <input type="text" id="weightInput" required />
+              </label>
+              <label for="heightInput"
+                >Height (cm)
+                <input type="text" id="heightInput" required />
+              </label>
+              <label for="ageInput"
+                >Age (yrs)
+                <input type="text" id="ageInput" required />
+              </label>
+              <label for="activityLevelInput"
+                >Activity Level
+                <select id="activityLevelInput" required>
+                  <option value="sedentary">Sedentary</option>
+                  <option value="lightly-active">Lightly active</option>
+                  <option value="moderately-active">Moderately active</option>
+                  <option value="very-active">Very active</option>
+                  <option value="super-active">Super active</option>
+                </select>
+              </label>
+              <label for="fitnessGoalInput"
+                >Fitness Goal
+                <select id="fitnessGoalInput" required>
+                  <option value="weight-loss">Fat loss</option>
+                  <option value="muscle-gain">Muscle gain</option>
+                  <option value="maintenance">Maintenance</option>
+                </select>
+              </label>
+              <button class="search-btn">Get Targets</button>
+            </form>
+          </article>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="analyse-recipes.js"></script>
+  </body>
+</html>
