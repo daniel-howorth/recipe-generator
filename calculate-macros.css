@@ -29,6 +29,7 @@ input {
 
 .macro-target span:first-child {
   font-weight: 500;
+  margin-right: 24px;
 }
 
 .macro-target:last-of-type {
