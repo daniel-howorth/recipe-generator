@@ -4,11 +4,33 @@
 
 select,
 input {
-  border-radius: revert;
   padding: 8px;
   width: 100%;
 }
 
 input {
   padding: 8px 12px;
+}
+
+.macro-targets h2 {
+  margin-bottom: 1.125rem;
+  font-size: calc(20 / 16 * 1rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+.macro-target {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.macro-target span:first-child {
+  font-weight: 500;
+}
+
+.macro-target:last-of-type {
+  margin-bottom: 0;
 }
