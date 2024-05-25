@@ -88,6 +88,10 @@ function getTotalNutrients(data) {
 }
 
 function displayNutrition(inputValue, data) {
+  document
+    .querySelector(".nutritional-breakdown-wrapper")
+    .classList.remove("hidden");
+
   // clear any existing data
   while (nutritionalBreakdown.firstChild) {
     nutritionalBreakdown.removeChild(nutritionalBreakdown.firstChild);
@@ -97,7 +101,7 @@ function displayNutrition(inputValue, data) {
   if (data.items.length === 0) {
     const noResultsMsg = `<div class="centered-text"><span>Sorry, we could not find any results.</span></div>`;
     nutritionalBreakdown.innerHTML = noResultsMsg;
-    nutritionalBreakdown.classList.remove("hidden");
+    nutritionalBreakdown.scrollIntoView({ behavior: "smooth" });
     return;
   }
 
@@ -136,5 +140,5 @@ function displayNutrition(inputValue, data) {
   `;
 
   nutritionalBreakdown.innerHTML = nutritionalBreakdownHTML;
-  nutritionalBreakdown.classList.remove("hidden");
+  nutritionalBreakdown.scrollIntoView({ behavior: "smooth" });
 }

@@ -1,5 +1,4 @@
 .nutritional-breakdown h1 {
-  margin-top: 32px;
   margin-bottom: 8px;
   font-size: calc(20 / 16 * 1rem);
   font-weight: 600;
@@ -11,10 +10,10 @@
   margin-bottom: 32px;
 }
 
-.nutritional-breakdown .centered-text {
-  margin-top: 32px;
-}
-
 form .form-instruction {
   margin-bottom: 1rem;
+}
+
+.card-wrapper {
+  width: min(calc(560 / 16 * 1rem), 95vw);
 }
