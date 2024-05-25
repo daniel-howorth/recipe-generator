@@ -1,5 +1,5 @@
 .card-wrapper {
-  width: min(calc(300 / 16 * 1rem), 95vw);
+  width: min(calc(400 / 16 * 1rem), 95vw);
 }
 
 select,
