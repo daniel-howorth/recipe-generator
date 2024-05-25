@@ -9,9 +9,12 @@ const fitnessGoal = document.querySelector("#fitnessGoalInput");
 
 getTargetsBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  // const isValid = validateInput()
-  const targets = getTargets();
-  displayMacroTargets(targets);
+  const allInputs = document.querySelectorAll("form input");
+  // const inputIsValid = validateInput(allInputs);
+  // if (inputIsValid) {
+  //   const targets = getTargets();
+  //   displayMacroTargets(targets);
+  // }
 });
 
 function getTargets() {
