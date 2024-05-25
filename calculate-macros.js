@@ -9,8 +9,8 @@ const fitnessGoal = document.querySelector("#fitnessGoalInput");
 
 getTargetsBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  // const isValid = validateInput()
   const targets = getTargets();
-  // console.log(targets);
   displayMacroTargets(targets);
 });
 
