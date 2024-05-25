@@ -1,3 +1,5 @@
+import { validateInput } from "./utils.js";
+
 const macroTargetsCard = document.querySelector(".macro-targets");
 const getTargetsBtn = document.querySelector(".search-btn");
 const gender = document.querySelector("#genderInput");
@@ -6,18 +8,38 @@ const height = document.querySelector("#heightInput");
 const age = document.querySelector("#ageInput");
 const activityLevel = document.querySelector("#activityLevelInput");
 const fitnessGoal = document.querySelector("#fitnessGoalInput");
+const unpopulatedInputsMsg = document.querySelector(".unpopulatedInputsMsg");
 
 getTargetsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const allInputs = document.querySelectorAll("form input");
-  // const inputIsValid = validateInput(allInputs);
-  // if (inputIsValid) {
-  //   const targets = getTargets();
-  //   displayMacroTargets(targets);
-  // }
+  const allInputsPopulated = checkInputsPopulated(allInputs);
+  let inputIsValid = false;
+  if (allInputsPopulated) {
+    inputIsValid = validateInput(allInputs);
+  }
+  if (inputIsValid) {
+    const targets = getTargets();
+    displayMacroTargets(targets);
+  }
 });
 
+function checkInputsPopulated(allInputs) {
+  // convert nodelist to array
+  const allInputsArray = [...allInputs];
+  const allInputsPopulated = allInputsArray.every((input) => input.value);
+  allInputsPopulated
+    ? unpopulatedInputsMsg.classList.add("hidden")
+    : unpopulatedInputsMsg.classList.remove("hidden");
+  return allInputsPopulated;
+}
+
 function getTargets() {
+  // if data doesn't exist, return early.
+  if (!gender.value || !weight.value || !height.value || !age.value) {
+    return 0;
+  }
+
   const bmr = getBMR(gender.value, weight.value, height.value, age.value);
 
   const tdee = getTDEE(bmr, activityLevel.value);
@@ -82,6 +104,11 @@ function getMacroTargets(weight, calorieTarget, fitnessGoal) {
 }
 
 function displayMacroTargets(data) {
+  // if data doesn't exist, return early.
+  if (!data) {
+    return 0;
+  }
+
   while (macroTargetsCard.firstChild) {
     macroTargetsCard.removeChild(macroTargetsCard.firstChild);
   }
