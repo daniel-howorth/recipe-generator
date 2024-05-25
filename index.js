@@ -41,7 +41,7 @@ function validateInput(inputs) {
     if (input.value) {
       // test numeric inputs
       if (input.classList.contains("number-input")) {
-        if (/^\d+$/.test(input.value)) {
+        if (/^\d+(\.\d+)?$/.test(input.value)) {
           validStates.push(true);
         } else {
           validStates.push(false);
