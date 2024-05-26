@@ -1,0 +1,20 @@
+{
+  "name": "recipe-generator",
+  "version": "1.0.0",
+  "description": "Generate recipes, calculate macro targets, and analyse recipes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=development"
+  },
+  "keywords": [],
+  "author": "Daniel Howorth",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.12.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
