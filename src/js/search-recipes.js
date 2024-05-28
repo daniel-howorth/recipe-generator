@@ -65,9 +65,9 @@ function toggleContent() {
   const toggleIcon = this.querySelector("img");
 
   if (toggleIcon.getAttribute("src").includes("chevron-down")) {
-    toggleIcon.setAttribute("src", "assets/chevron-up.svg");
+    toggleIcon.setAttribute("src", "../../assets/chevron-up.svg");
   } else {
-    toggleIcon.setAttribute("src", "assets/chevron-down.svg");
+    toggleIcon.setAttribute("src", "../../assets/chevron-down.svg");
   }
 
   content.classList.toggle("hidden");
@@ -83,7 +83,7 @@ function hideSearchForm() {
   document.querySelector("#nutritional-requirements").classList.add("hidden");
   document
     .querySelector("#searchFormToggleIcon")
-    .setAttribute("src", "assets/chevron-down.svg");
+    .setAttribute("src", "../../assets/chevron-down.svg");
   window.scrollTo(0, 0);
 }
 
@@ -165,7 +165,7 @@ function displayRecipe(data) {
       readyIn
         ? `<div class="ready-in">
             <div class="visually-hidden">ready in</div>
-            <img src="assets/clock.svg" alt="clock" class="clock-icon" />
+            <img src="../../assets/clock.svg" alt="clock" class="clock-icon" />
             <span>${readyIn} mins</span>
           </div>`
         : ""
@@ -179,7 +179,7 @@ function displayRecipe(data) {
         data-toggle="nutritional-content"
       >
         <div class="visually-hidden">Toggle nutritional content.</div>
-        <img src="assets/chevron-up.svg" alt="chevron" />
+        <img src="../../assets/chevron-up.svg" alt="chevron" />
       </button>
     </header>
 
@@ -218,7 +218,7 @@ function displayRecipe(data) {
         data-toggle="ingredients-content"
       >
         <div class="visually-hidden">Toggle instructions.</div>
-        <img src="assets/chevron-down.svg" alt="chevron" />
+        <img src="../../assets/chevron-down.svg" alt="chevron" />
       </button>
     </header>
     <div class="hidden" id="ingredients-content">
@@ -247,7 +247,7 @@ function displayRecipe(data) {
         data-toggle="instructions-content"
       >
         <div class="visually-hidden">Toggle instructions.</div>
-        <img src="assets/chevron-down.svg" alt="chevron" />
+        <img src="../../assets/chevron-down.svg" alt="chevron" />
       </button>
     </header>
     <ol class="hidden" id="instructions-content">
