@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   // entry points
   entry: {
-    index: "./src/js/index.js",
+    login: "./src/js/login.js",
     "search-recipes": "./src/js/search-recipes.js",
     "analyse-recipes": "./src/js/analyse-recipes.js",
     "calculate-macros": "./src/js/calculate-macros.js",
