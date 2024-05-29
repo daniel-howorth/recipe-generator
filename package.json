@@ -11,7 +11,10 @@
   "author": "Daniel Howorth",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^10.12.1"
+    "@firebase/app-compat": "^0.2.35",
+    "@firebase/auth-compat": "^0.5.9",
+    "firebase": "^10.12.2",
+    "firebaseui": "^6.1.0"
   },
   "devDependencies": {
     "webpack": "^5.91.0",
