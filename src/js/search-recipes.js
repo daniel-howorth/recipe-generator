@@ -1,4 +1,6 @@
 import { isNumber, validateInput } from "./utils.js";
+import firebase from "./index.js";
+import { signOutUser } from "./auth.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeCard = document.querySelector(".recipe");
@@ -297,3 +299,18 @@ function displayRecipe(data) {
 }
 
 applyToggleContentEventListeners();
+
+const logoutBtns = document.querySelectorAll(".logout");
+
+logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
+
+// firebase.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/v8/firebase.User
+//     var uid = user.uid;
+//     console.log("user:", uid);
+//   } else {
+//     console.log("user is signed out");
+//   }
+// });
