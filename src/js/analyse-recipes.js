@@ -1,4 +1,6 @@
 import { isNumber } from "./utils.js";
+import firebase from "./index.js";
+import { signOutUser } from "./auth.js";
 
 const analyseRecipeBtn = document.querySelector(".search-btn");
 const nutritionalBreakdown = document.querySelector(".nutritional-breakdown");
@@ -142,3 +144,6 @@ function displayNutrition(inputValue, data) {
   nutritionalBreakdown.innerHTML = nutritionalBreakdownHTML;
   nutritionalBreakdown.scrollIntoView({ behavior: "smooth" });
 }
+
+const logoutBtns = document.querySelectorAll(".logout");
+logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));

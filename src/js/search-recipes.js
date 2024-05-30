@@ -301,7 +301,6 @@ function displayRecipe(data) {
 applyToggleContentEventListeners();
 
 const logoutBtns = document.querySelectorAll(".logout");
-
 logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
 
 // firebase.auth().onAuthStateChanged((user) => {

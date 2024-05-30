@@ -126,6 +126,15 @@ button.nav-btn {
   width: calc(50 / 16 * 1rem);
 }
 
+nav li a {
+  /* color: revert; */
+  text-decoration: none;
+}
+
+nav li a:visited {
+  color: var(--color-primary-light);
+}
+
 main {
   background-color: var(--color-off-white);
   flex: 5;
@@ -443,10 +452,19 @@ button.toggle-content-btn {
     cursor: pointer;
   }
 
-  nav ul.main-nav li:not(.active-page-link):hover {
+  /* nav ul.main-nav li:not(.active-page-link):hover {
+    color: var(--color-accent);
+  } */
+
+  nav li.active-page-link {
+    cursor: default;
+  }
+
+  nav li a:hover {
     color: var(--color-accent);
   }
 
+  /* change to target a */
   nav ul.second-nav li:hover {
     background-color: var(--color-accent);
     border-top-color: var(--color-accent);

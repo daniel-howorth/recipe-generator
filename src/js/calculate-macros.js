@@ -1,4 +1,6 @@
 import { validateInput } from "./utils.js";
+import firebase from "./index.js";
+import { signOutUser } from "./auth.js";
 
 const macroTargetsCard = document.querySelector(".macro-targets");
 const getTargetsBtn = document.querySelector(".search-btn");
@@ -137,3 +139,6 @@ function displayMacroTargets(data) {
   document.querySelector(".macro-targets-wrapper").classList.remove("hidden");
   macroTargetsCard.scrollIntoView({ behavior: "smooth" });
 }
+
+const logoutBtns = document.querySelectorAll(".logout");
+logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
