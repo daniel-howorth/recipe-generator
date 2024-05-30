@@ -1,4 +1,6 @@
 import firebase from "./index.js";
+import "firebase/compat/auth";
+import * as firebaseui from "firebaseui";
 
 const uiConfig = {
   signInSuccessUrl: "search-recipes.html",
@@ -19,8 +21,6 @@ ui.start("#firebaseui-auth-container", uiConfig);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    const uid = user.uid;
-    console.log("user:", uid);
     localStorage.setItem("user", JSON.stringify(user));
   } else {
     console.log("user is signed out");

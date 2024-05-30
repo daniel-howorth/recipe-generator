@@ -303,13 +303,10 @@ applyToggleContentEventListeners();
 const logoutBtns = document.querySelectorAll(".logout");
 logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
 
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/v8/firebase.User
-//     var uid = user.uid;
-//     console.log("user:", uid);
-//   } else {
-//     console.log("user is signed out");
-//   }
-// });
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("current user:", user.uid);
+  } else {
+    window.location.href = "index.html";
+  }
+});

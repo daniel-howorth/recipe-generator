@@ -147,3 +147,11 @@ function displayNutrition(inputValue, data) {
 
 const logoutBtns = document.querySelectorAll(".logout");
 logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("current user:", user.uid);
+  } else {
+    window.location.href = "index.html";
+  }
+});
