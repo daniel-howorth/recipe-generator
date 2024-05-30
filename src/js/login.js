@@ -5,9 +5,8 @@ ui.start("#firebaseui-auth-container", uiConfig);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    localStorage.setItem("user", JSON.stringify(user));
+    console.log("current user:", user.uid);
   } else {
     console.log("user is signed out");
-    localStorage.removeItem("user");
   }
 });

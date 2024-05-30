@@ -1,9 +1,12 @@
 import { isNumber, validateInput } from "./utils.js";
 import firebase from "./index.js";
-import { signOutUser } from "./auth.js";
+import { signOutUser, getCurrentUserId } from "./auth.js";
+import { saveRecipe } from "./db.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeCard = document.querySelector(".recipe");
+
+let currentRecipeData = {};
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 
@@ -24,9 +27,9 @@ searchBtn.addEventListener("click", async (event) => {
   if (inputIsValid) {
     const url = buildUrl(allInputs);
     const recipeData = await getRecipes(url, options);
-    console.log(recipeData);
     displayRecipe(recipeData);
     hideSearchForm();
+    saveRecipe(getCurrentUserId(), currentRecipeData);
   }
 });
 
@@ -47,8 +50,8 @@ async function getRecipes(url, options) {
   try {
     const response = await fetch(url, options);
     if (response.ok) {
-      const results = await response.json();
-      return results || {};
+      const result = await response.json();
+      return result || {};
     } else {
       throw new Error(response.status);
     }
@@ -153,6 +156,17 @@ function displayRecipe(data) {
 
   const instructionsList =
     data.results[0].analyzedInstructions?.[0]?.steps || [];
+
+  currentRecipeData = {
+    id: data.results[0].id.toString(),
+    title: title,
+    image: image,
+    readyIn: readyIn,
+    servings: servings,
+    nutrients: [calories, protein, carbs, fat, fiber, sugar],
+    ingredientsList: ingredientsList,
+    instructionsList: instructionsList,
+  };
 
   const recipeImgHTML = `
     <img
