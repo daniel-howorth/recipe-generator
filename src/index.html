@@ -10,12 +10,29 @@
       href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css"
     />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/login.css" />
   </head>
   <body>
     <div class="app-wrapper">
       <main>
-        <h1>Welcome</h1>
-        <div id="firebaseui-auth-container"></div>
+        <div class="card-wrapper">
+          <div class="card" id="title-card">
+            <h1>Welcome.</h1>
+            <ul>
+              <li>
+                Search for recipes based on your nutritional requirements.
+              </li>
+              <li>Calculate your personal macro targets.</li>
+              <li>Analyse the nutritional content of any recipe.</li>
+              <li>Save your favourite recipes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="card" id="signin-card">
+            <div id="firebaseui-auth-container"></div>
+          </div>
+        </div>
       </main>
     </div>
 

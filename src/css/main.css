@@ -127,7 +127,7 @@ button.nav-btn {
 }
 
 nav li a {
-  /* color: revert; */
+  color: var(--color-primary-light);
   text-decoration: none;
 }
 
