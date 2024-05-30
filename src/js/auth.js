@@ -1,4 +1,5 @@
 import firebase from "./index.js";
+import "firebase/compat/auth";
 
 export async function signOutUser() {
   try {
