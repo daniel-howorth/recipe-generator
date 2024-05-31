@@ -416,6 +416,15 @@ button.toggle-content-btn {
   margin-bottom: 0;
 }
 
+.save-recipe-btn {
+  height: 50px;
+  width: 50px;
+  margin-top: 16px;
+  border: none;
+  background-color: var(--color-white);
+  padding: 0;
+}
+
 .hidden {
   display: none !important;
 }

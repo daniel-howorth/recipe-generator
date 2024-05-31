@@ -1,6 +1,7 @@
 import { isNumber } from "./utils";
 
 export const cleanRecipeData = (data) => {
+  const id = data.id.toString();
   const image = data.image || "assets/default-recipe-image.jpg";
   const title = data.title || "Recipe";
   const readyIn = data.readyInMinutes;
@@ -40,6 +41,7 @@ export const cleanRecipeData = (data) => {
   const instructionsList = data.analyzedInstructions?.[0]?.steps || [];
 
   return {
+    id: id,
     title: title,
     image: image,
     readyIn: readyIn,
