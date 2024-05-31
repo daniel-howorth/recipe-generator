@@ -5,6 +5,7 @@ import { saveRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
 
 const searchBtn = document.querySelector("button.search-btn");
+const recipeWrapper = document.querySelector(".recipe-wrapper");
 
 let currentRecipeData = {};
 
@@ -33,8 +34,7 @@ searchBtn.addEventListener("click", async (event) => {
       displayRecipe(cleanedData);
       // saveRecipe(getCurrentUserId(), currentRecipeData);
     } else {
-      // display no results - make its own function?
-      displayRecipe("");
+      displayNoResultsMsg();
     }
     hideSearchForm();
   }
@@ -100,7 +100,6 @@ function hideSearchForm() {
 }
 
 function displayRecipe(data) {
-  const recipeWrapper = document.querySelector(".recipe-wrapper");
   recipeWrapper.classList.remove("hidden");
 
   // clear any existing recipe data
@@ -108,22 +107,25 @@ function displayRecipe(data) {
     recipeWrapper.removeChild(recipeWrapper.firstChild);
   }
 
-  // ******** check *********
-  // if no results, display message.
-  if (!data) {
-    const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
-    const recipeCard = document.createElement("article");
-    recipeCard.setAttribute("class", "recipe card");
-    recipeCard.innerHTML = noResultsMsg;
-    recipeWrapper.appendChild(recipeCard);
-    return;
-  }
-
   const recipeCard = buildRecipeCard(data);
   recipeWrapper.appendChild(recipeCard);
 
   applyToggleContentEventListeners();
 }
+
+const displayNoResultsMsg = () => {
+  recipeWrapper.classList.remove("hidden");
+
+  while (recipeWrapper.firstChild) {
+    recipeWrapper.removeChild(recipeWrapper.firstChild);
+  }
+
+  const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
+  const recipeCard = document.createElement("article");
+  recipeCard.setAttribute("class", "recipe card");
+  recipeCard.innerHTML = noResultsMsg;
+  recipeWrapper.appendChild(recipeCard);
+};
 
 applyToggleContentEventListeners();
 
