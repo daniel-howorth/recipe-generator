@@ -26,3 +26,32 @@ export const saveRecipe = async (userId, recipeData) => {
     window.alert("There was a problem saving the recipe.");
   }
 };
+
+export const checkSavedRecipe = async (userId, recipeId) => {
+  try {
+    const recipeRef = db
+      .collection("users")
+      .doc(userId)
+      .collection("savedRecipes")
+      .doc(recipeId);
+    const docSnapshot = await recipeRef.get();
+    return docSnapshot.exists;
+  } catch (error) {
+    console.error("error checking if recipe is saved: ", error);
+  }
+};
+
+export const deleteRecipe = async (userId, recipeId) => {
+  try {
+    await db
+      .collection("users")
+      .doc(userId)
+      .collection("savedRecipes")
+      .doc(recipeId)
+      .delete();
+    console.log("successfully deleted recipe");
+  } catch (error) {
+    console.error("error deleting recipe: ", error);
+    window.alert("There was a problem deleting the recipe.");
+  }
+};

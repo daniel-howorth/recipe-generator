@@ -1,13 +1,14 @@
 import { validateInput } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
-import { saveRecipe } from "./db.js";
+import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeWrapper = document.querySelector(".recipe-wrapper");
 
 let currentRecipeData = {};
+let recipeIsSaved = "";
 
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 
@@ -31,8 +32,11 @@ searchBtn.addEventListener("click", async (event) => {
     if (recipeData) {
       const cleanedData = cleanRecipeData(recipeData);
       currentRecipeData = cleanedData;
+      recipeIsSaved = await checkSavedRecipe(
+        getCurrentUserId(),
+        currentRecipeData.id
+      );
       displayRecipe(cleanedData);
-      // saveRecipe(getCurrentUserId(), currentRecipeData);
     } else {
       displayNoResultsMsg();
     }
@@ -91,6 +95,8 @@ function applyToggleContentEventListeners() {
     .forEach((button) => button.addEventListener("click", toggleContent));
 }
 
+applyToggleContentEventListeners();
+
 function hideSearchForm() {
   document.querySelector("#nutritional-requirements").classList.add("hidden");
   document
@@ -108,6 +114,7 @@ function displayRecipe(data) {
   }
 
   const recipeCard = buildRecipeCard(data);
+  recipeCard.appendChild(attachSaveButton());
   recipeWrapper.appendChild(recipeCard);
 
   applyToggleContentEventListeners();
@@ -127,8 +134,6 @@ const displayNoResultsMsg = () => {
   recipeWrapper.appendChild(recipeCard);
 };
 
-applyToggleContentEventListeners();
-
 const logoutBtns = document.querySelectorAll(".logout");
 logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
 
@@ -139,3 +144,33 @@ firebase.auth().onAuthStateChanged((user) => {
     window.location.href = "index.html";
   }
 });
+
+const attachSaveButton = () => {
+  const saveButton = document.createElement("button");
+  saveButton.setAttribute("class", "save-recipe-btn");
+
+  const imgSrc = recipeIsSaved
+    ? "../../assets/favourite.svg"
+    : "../../assets/favourite-border.svg";
+
+  saveButton.innerHTML = `
+    <img src=${imgSrc} alt="heart" />
+    <div class="visually-hidden">save recipe</div>
+  `;
+  saveButton.addEventListener("click", handleSaveRecipeBtnClick);
+  return saveButton;
+};
+
+const handleSaveRecipeBtnClick = (e) => {
+  if (recipeIsSaved) {
+    // delete recipe from db
+    deleteRecipe(getCurrentUserId(), currentRecipeData.id);
+    e.target.setAttribute("src", "../../assets/favourite-border.svg");
+    recipeIsSaved = false;
+  } else {
+    // save recipe to db
+    saveRecipe(getCurrentUserId(), currentRecipeData);
+    e.target.setAttribute("src", "../../assets/favourite.svg");
+    recipeIsSaved = true;
+  }
+};
