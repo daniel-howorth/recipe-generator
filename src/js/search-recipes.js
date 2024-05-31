@@ -114,38 +114,14 @@ function displayRecipe(data) {
   }
 
   const recipeCard = buildRecipeCard(data);
-  recipeCard.appendChild(attachSaveButton());
+  const saveRecipeBtn = buildSaveRecipeBtn();
+  recipeCard.appendChild(saveRecipeBtn);
   recipeWrapper.appendChild(recipeCard);
 
   applyToggleContentEventListeners();
 }
 
-const displayNoResultsMsg = () => {
-  recipeWrapper.classList.remove("hidden");
-
-  while (recipeWrapper.firstChild) {
-    recipeWrapper.removeChild(recipeWrapper.firstChild);
-  }
-
-  const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
-  const recipeCard = document.createElement("article");
-  recipeCard.setAttribute("class", "recipe card");
-  recipeCard.innerHTML = noResultsMsg;
-  recipeWrapper.appendChild(recipeCard);
-};
-
-const logoutBtns = document.querySelectorAll(".logout");
-logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
-
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log("current user:", user.uid);
-  } else {
-    window.location.href = "index.html";
-  }
-});
-
-const attachSaveButton = () => {
+const buildSaveRecipeBtn = () => {
   const saveButton = document.createElement("button");
   saveButton.setAttribute("class", "save-recipe-btn");
 
@@ -174,3 +150,28 @@ const handleSaveRecipeBtnClick = (e) => {
     recipeIsSaved = true;
   }
 };
+
+const displayNoResultsMsg = () => {
+  recipeWrapper.classList.remove("hidden");
+
+  while (recipeWrapper.firstChild) {
+    recipeWrapper.removeChild(recipeWrapper.firstChild);
+  }
+
+  const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
+  const recipeCard = document.createElement("article");
+  recipeCard.setAttribute("class", "recipe card");
+  recipeCard.innerHTML = noResultsMsg;
+  recipeWrapper.appendChild(recipeCard);
+};
+
+const logoutBtns = document.querySelectorAll(".logout");
+logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("current user:", user.uid);
+  } else {
+    window.location.href = "index.html";
+  }
+});
