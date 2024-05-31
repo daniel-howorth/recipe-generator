@@ -1,3 +1,62 @@
+import { isNumber } from "./utils";
+
+export const cleanRecipeData = (data) => {
+  const image = data.image || "assets/default-recipe-image.jpg";
+  const title = data.title || "Recipe";
+  const readyIn = data.readyInMinutes;
+  const nutrients = data.nutrition?.nutrients || [];
+
+  let calories = nutrients.find((nutrient) => nutrient.name === "Calories");
+  calories =
+    calories?.amount && isNumber(calories.amount)
+      ? Math.round(calories.amount)
+      : "";
+
+  let protein = nutrients.find((nutrient) => nutrient.name === "Protein");
+  protein =
+    protein?.amount && isNumber(protein.amount)
+      ? Math.round(protein.amount)
+      : "";
+
+  let carbs = nutrients.find((nutrient) => nutrient.name === "Carbohydrates");
+  carbs =
+    carbs?.amount && isNumber(carbs.amount) ? Math.round(carbs.amount) : "";
+
+  let fat = nutrients.find((nutrient) => nutrient.name === "Fat");
+  fat = fat?.amount && isNumber(fat.amount) ? Math.round(fat.amount) : "";
+
+  let fiber = nutrients.find((nutrient) => nutrient.name === "Fiber");
+  fiber =
+    fiber?.amount && isNumber(fiber.amount) ? Math.round(fiber.amount) : "";
+
+  let sugar = nutrients.find((nutrient) => nutrient.name === "Sugar");
+  sugar =
+    sugar?.amount && isNumber(sugar.amount) ? Math.round(sugar.amount) : "";
+
+  const servings = data.servings;
+
+  const ingredientsList = data.extendedIngredients || [];
+
+  const instructionsList = data.analyzedInstructions?.[0]?.steps || [];
+
+  return {
+    title: title,
+    image: image,
+    readyIn: readyIn,
+    nutrients: {
+      calories: calories,
+      protein: protein,
+      carbs: carbs,
+      fat: fat,
+      fiber: fiber,
+      sugar: sugar,
+    },
+    servings: servings,
+    ingredientsList: ingredientsList,
+    instructionsList: instructionsList,
+  };
+};
+
 const getRecipeImageHTML = (imageUrl) => {
   return `
     <img
@@ -44,27 +103,29 @@ const getRecipeNutritionHTML = ({
 
     <div id="nutritional-content">
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${calories}</div>
+        <div class="nutrition-stat-content">${calories ? calories : "n/a"}</div>
         <span class="nutrition-stat-label">Calories</span>
       </div>
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${protein}</div>
+        <div class="nutrition-stat-content">${
+          protein ? protein + "g" : "n/a"
+        }</div>
         <span class="nutrition-stat-label">Protein</span>
       </div>
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${carbs}</div>
+        <div class="nutrition-stat-content">${carbs ? carbs + "g" : "n/a"}</div>
         <span class="nutrition-stat-label">Carbs</span>
       </div>
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${fat}</div>
+        <div class="nutrition-stat-content">${fat ? fat + "g" : "n/a"}</div>
         <span class="nutrition-stat-label">Fat</span>
       </div>
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${fiber}</div>
+        <div class="nutrition-stat-content">${fiber ? fiber + "g" : "n/a"}</div>
         <span class="nutrition-stat-label">Fiber</span>
       </div>
       <div class="nutrition-stat">
-        <div class="nutrition-stat-content">${sugar}</div>
+        <div class="nutrition-stat-content">${sugar ? sugar + "g" : "n/a"}</div>
         <span class="nutrition-stat-label">Sugar</span>
       </div>
     </div>

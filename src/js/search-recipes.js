@@ -1,8 +1,8 @@
-import { isNumber, validateInput } from "./utils.js";
+import { validateInput } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe } from "./db.js";
-import { buildRecipeCard } from "./recipe-processor.js";
+import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 
@@ -27,9 +27,16 @@ searchBtn.addEventListener("click", async (event) => {
   if (inputIsValid) {
     const url = buildUrl(allInputs);
     const recipeData = await getRecipes(url, options);
-    displayRecipe(recipeData);
+    if (recipeData) {
+      const cleanedData = cleanRecipeData(recipeData);
+      currentRecipeData = cleanedData;
+      displayRecipe(cleanedData);
+      // saveRecipe(getCurrentUserId(), currentRecipeData);
+    } else {
+      // display no results - make its own function?
+      displayRecipe("");
+    }
     hideSearchForm();
-    // saveRecipe(getCurrentUserId(), currentRecipeData);
   }
 });
 
@@ -51,7 +58,7 @@ async function getRecipes(url, options) {
     const response = await fetch(url, options);
     if (response.ok) {
       const result = await response.json();
-      return result || {};
+      return result.results?.[0] || "";
     } else {
       throw new Error(response.status);
     }
@@ -101,8 +108,9 @@ function displayRecipe(data) {
     recipeWrapper.removeChild(recipeWrapper.firstChild);
   }
 
+  // ******** check *********
   // if no results, display message.
-  if (!data?.results?.length) {
+  if (!data) {
     const noResultsMsg = `<div class="centered-text"><span>Could not find any recipes. Try tweaking your requirements.</span></div>`;
     const recipeCard = document.createElement("article");
     recipeCard.setAttribute("class", "recipe card");
@@ -111,86 +119,7 @@ function displayRecipe(data) {
     return;
   }
 
-  const image = data.results[0].image || "assets/default-recipe-image.jpg";
-
-  const title = data.results[0].title || "Recipe";
-
-  const readyIn = data.results[0].readyInMinutes;
-
-  // clean nutrients data
-  const nutrients = data.results[0].nutrition?.nutrients || [];
-
-  let calories = nutrients.find((nutrient) => nutrient.name === "Calories");
-  calories =
-    calories?.amount && isNumber(calories.amount)
-      ? Math.round(calories.amount)
-      : "n/a";
-
-  let protein = nutrients.find((nutrient) => nutrient.name === "Protein");
-  protein =
-    protein?.amount && isNumber(protein.amount)
-      ? `${Math.round(protein.amount)}g`
-      : "n/a";
-
-  let carbs = nutrients.find((nutrient) => nutrient.name === "Carbohydrates");
-  carbs =
-    carbs?.amount && isNumber(carbs.amount)
-      ? `${Math.round(carbs.amount)}g`
-      : "n/a";
-
-  let fat = nutrients.find((nutrient) => nutrient.name === "Fat");
-  fat =
-    fat?.amount && isNumber(fat.amount) ? `${Math.round(fat.amount)}g` : "n/a";
-
-  let fiber = nutrients.find((nutrient) => nutrient.name === "Fiber");
-  fiber =
-    fiber?.amount && isNumber(fiber.amount)
-      ? `${Math.round(fiber.amount)}g`
-      : "n/a";
-
-  let sugar = nutrients.find((nutrient) => nutrient.name === "Sugar");
-  sugar =
-    sugar?.amount && isNumber(sugar.amount)
-      ? `${Math.round(sugar.amount)}g`
-      : "n/a";
-
-  const servings = data.results[0].servings;
-
-  const ingredientsList = data.results[0].extendedIngredients || [];
-
-  const instructionsList =
-    data.results[0].analyzedInstructions?.[0]?.steps || [];
-
-  // currentRecipeData = {
-  //   id: data.results[0].id.toString(),
-  //   title: title,
-  //   image: image,
-  //   readyIn: readyIn,
-  //   servings: servings,
-  //   nutrients: [calories, protein, carbs, fat, fiber, sugar],
-  //   ingredientsList: ingredientsList,
-  //   instructionsList: instructionsList,
-  // };
-
-  currentRecipeData = {
-    id: data.results[0].id.toString(),
-    title: title,
-    image: image,
-    readyIn: readyIn,
-    servings: servings,
-    nutrients: {
-      calories: calories,
-      protein: protein,
-      carbs: carbs,
-      fat: fat,
-      fiber: fiber,
-      sugar: sugar,
-    },
-    ingredientsList: ingredientsList,
-    instructionsList: instructionsList,
-  };
-
-  const recipeCard = buildRecipeCard(currentRecipeData);
+  const recipeCard = buildRecipeCard(data);
   recipeWrapper.appendChild(recipeCard);
 
   applyToggleContentEventListeners();
