@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Generator</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/saved-recipes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <div class="side-nav-container">
+        <nav class="side-nav">
+          <button class="nav-btn">
+            <img src="../assets/menu.svg" alt="menu button" />
+            <div class="visually-hidden">menu button</div>
+          </button>
+          <div class="nav-buttons-group">
+            <button class="nav-btn">
+              <img src="../assets/profile.svg" alt="profile button" />
+              <div class="visually-hidden">profile button</div>
+            </button>
+            <button class="nav-btn logout">
+              <img src="../assets/log-out.svg" alt="log out button" />
+              <div class="visually-hidden">log out button</div>
+            </button>
+          </div>
+
+          <ul class="main-nav">
+            <li><a href="./search-recipes.html">Search Recipes</a></li>
+            <li><a href="./calculate-macros.html">Calculate Macros</a></li>
+            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
+            <li class="active-page-link">Saved Recipes</li>
+          </ul>
+          <ul class="second-nav">
+            <li>Profile</li>
+            <li class="logout">Logout</li>
+          </ul>
+        </nav>
+      </div>
+      <main>
+        <header class="page-header">
+          <h1>Saved Recipes</h1>
+          <p>View all of your favourite recipes.</p>
+        </header>
+        <div class="card-wrapper">
+          <article class="saved-recipe card">
+            <div class="saved-recipe-img-wrapper">
+              <img
+                src="https://img.spoonacular.com/recipes/856117-312x231.jpg"
+                alt=""
+                class="saved-recipe-img"
+              />
+            </div>
+            <span>title of recipe</span>
+            <span>buttons</span>
+          </article>
+        </div>
+        <!-- <div class="card-wrapper">
+          <article class="saved-recipe card">
+            <div class="saved-recipe-img-wrapper">
+              <img
+                src="https://img.spoonacular.com/recipes/856117-312x231.jpg"
+                alt=""
+                class="saved-recipe-img"
+              />
+            </div>
+            <span>title of recipe</span>
+            <span>buttons</span>
+          </article>
+        </div>
+        <div class="card-wrapper">
+          <article class="saved-recipe card">
+            <div class="saved-recipe-img-wrapper">
+              <img
+                src="https://img.spoonacular.com/recipes/856117-312x231.jpg"
+                alt=""
+                class="saved-recipe-img"
+              />
+            </div>
+            <span>title of recipe</span>
+            <span>buttons</span>
+          </article> -->
+        </div>
+      </main>
+    </div>
+    <!-- <script type="module" src="../dist/search-recipes.bundle.js"></script> -->
+  </body>
+</html>

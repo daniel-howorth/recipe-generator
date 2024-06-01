@@ -417,8 +417,8 @@ button.toggle-content-btn {
 }
 
 .save-recipe-btn {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   margin-top: 16px;
   border: none;
   background-color: var(--color-white);
