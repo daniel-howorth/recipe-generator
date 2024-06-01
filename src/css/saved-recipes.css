@@ -11,7 +11,7 @@
   align-items: center;
   padding: 0;
   padding-right: 32px;
-  gap: 100px;
+  gap: 75px;
   overflow: auto;
 }
 
@@ -32,13 +32,24 @@
   background-color: var(--color-primary-dark);
   border: none;
   border-radius: 5px;
-  height: 65px;
-  width: 65px;
+  height: 40px;
+  width: 40px;
 }
 
 .saved-recipe-action-buttons button.delete-btn {
   background-color: hsl(9, 84%, 55%);
   margin-left: 8px;
+}
+
+.saved-recipe-title-wrapper {
+  width: 250px;
+  text-align: center;
+}
+
+.saved-recipe-title {
+  /* change as screen gets smaller? */
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 @media (max-width: calc(550 / 16 * 1rem)) {
