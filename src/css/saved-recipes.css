@@ -28,6 +28,19 @@
   border-bottom-left-radius: 25px;
 }
 
+.saved-recipe-action-buttons button {
+  background-color: var(--color-primary-dark);
+  border: none;
+  border-radius: 5px;
+  height: 65px;
+  width: 65px;
+}
+
+.saved-recipe-action-buttons button.delete-btn {
+  background-color: hsl(9, 84%, 55%);
+  margin-left: 8px;
+}
+
 @media (max-width: calc(550 / 16 * 1rem)) {
   .saved-recipe.card {
     flex-direction: column;
