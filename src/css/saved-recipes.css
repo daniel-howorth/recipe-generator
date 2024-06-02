@@ -47,12 +47,16 @@
 }
 
 .saved-recipe-title {
-  /* change as screen gets smaller? */
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 @media (max-width: calc(550 / 16 * 1rem)) {
+  .card-wrapper {
+    width: 300px;
+    max-width: 100%;
+  }
+
   .saved-recipe.card {
     flex-direction: column;
     padding-right: 0;
@@ -67,5 +71,16 @@
     width: 100%;
     border-bottom-left-radius: 0;
     border-top-right-radius: 25px;
+  }
+
+  .saved-recipe-title-wrapper {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: calc(300 / 16 * 1rem)) {
+  .saved-recipe-title {
+    font-size: 1.125rem;
   }
 }
