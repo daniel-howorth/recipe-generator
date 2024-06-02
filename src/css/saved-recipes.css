@@ -13,6 +13,7 @@
   padding-right: 32px;
   gap: 75px;
   overflow: auto;
+  height: 185px;
 }
 
 .saved-recipe.card * {
@@ -26,6 +27,7 @@
 .saved-recipe-img {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
+  height: 100%;
 }
 
 .saved-recipe-action-buttons button {
@@ -44,10 +46,12 @@
 .saved-recipe-title-wrapper {
   width: 250px;
   text-align: center;
+  max-height: 100%;
+  overflow: scroll;
 }
 
 .saved-recipe-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
@@ -69,6 +73,7 @@
     flex-direction: column;
     padding-right: 0;
     padding-bottom: 32px;
+    height: revert;
   }
 
   .saved-recipe-img-wrapper {
@@ -77,6 +82,7 @@
 
   .saved-recipe-img {
     width: 100%;
+    height: revert;
     border-bottom-left-radius: 0;
     border-top-right-radius: 25px;
   }
