@@ -55,3 +55,21 @@ export const deleteRecipe = async (userId, recipeId) => {
     window.alert("There was a problem deleting the recipe.");
   }
 };
+
+export const getAllSavedRecipes = async (userId) => {
+  console.log(userId);
+  try {
+    const querySnapshot = await db
+      .collection("users")
+      .doc(userId)
+      .collection("savedRecipes")
+      .get();
+
+    return querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  } catch (error) {
+    console.error("could not get recipes: ", error);
+  }
+};
