@@ -6,14 +6,19 @@ const savedRecipesContainer = document.querySelector(
   "#saved-recipes-container"
 );
 
-let savedRecipes = "";
+let savedRecipesCount = 0;
 
 // get and display user's saved recipes on page load
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     console.log("current user:", user.uid);
-    savedRecipes = await getAllSavedRecipes(user.uid);
-    displaySavedRecipes(savedRecipes);
+    let savedRecipes = await getAllSavedRecipes(user.uid);
+    savedRecipesCount = savedRecipes.length;
+    if (savedRecipesCount) {
+      displaySavedRecipes(savedRecipes);
+    } else {
+      displayNoSavedRecipesMsg();
+    }
   } else {
     window.location.href = "index.html";
   }
@@ -73,5 +78,16 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
 const deleteSavedRecipe = async (e) => {
   const recipe = document.querySelector(`#id_${e.target.dataset.id}`);
   savedRecipesContainer.removeChild(recipe);
+  savedRecipesCount--;
+  if (savedRecipesCount < 1) {
+    displayNoSavedRecipesMsg();
+  }
   await deleteRecipe(getCurrentUserId(), e.target.dataset.id);
+};
+
+const displayNoSavedRecipesMsg = () => {
+  const noSavedRecipesMsg = document.createElement("div");
+  noSavedRecipesMsg.setAttribute("class", "card-wrapper");
+  noSavedRecipesMsg.innerHTML = `<div class="card centered-text">You have no saved recipes.</div>`;
+  savedRecipesContainer.appendChild(noSavedRecipesMsg);
 };
