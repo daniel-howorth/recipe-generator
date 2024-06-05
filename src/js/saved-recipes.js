@@ -1,7 +1,8 @@
 import firebase from "./index.js";
 import { getAllSavedRecipes, deleteRecipe } from "./db.js";
 import { getCurrentUserId } from "./auth.js";
-import A11yDialog from "a11y-dialog";
+// import A11yDialog from "a11y-dialog";
+import { getModal, displayModalWithContent } from "./modal.js";
 import { buildRecipeCard } from "./recipe-processor.js";
 
 const savedRecipesContainer = document.querySelector(
@@ -10,7 +11,8 @@ const savedRecipesContainer = document.querySelector(
 
 const modalContentWrapper = document.querySelector(".modal-content-wrapper");
 const container = document.querySelector("#modal");
-const dialog = new A11yDialog(container);
+// const dialog = new A11yDialog(container);
+const modal = getModal(container);
 
 let savedRecipes = [];
 
@@ -86,19 +88,20 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
 };
 
 async function viewRecipeDetails() {
-  while (modalContentWrapper.firstChild) {
-    modalContentWrapper.removeChild(modalContentWrapper.firstChild);
-  }
+  // while (modalContentWrapper.firstChild) {
+  //   modalContentWrapper.removeChild(modalContentWrapper.firstChild);
+  // }
   const recipeData = savedRecipes.find(
     (recipe) => recipe.id === this.dataset.id
   );
   const recipeDetailsCard = buildRecipeCard(recipeData);
-  recipeDetailsCard.classList.add("modal-content");
-  recipeDetailsCard.setAttribute("role", "document");
-  modalContentWrapper.appendChild(recipeDetailsCard);
+  // recipeDetailsCard.classList.add("modal-content");
+  // recipeDetailsCard.setAttribute("role", "document");
+  // modalContentWrapper.appendChild(recipeDetailsCard);
+  displayModalWithContent(recipeDetailsCard, modalContentWrapper, modal);
   applyToggleContentEventListeners();
 
-  dialog.show();
+  // modal.show();
 }
 
 async function deleteSavedRecipe() {
