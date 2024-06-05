@@ -1,7 +1,6 @@
 import firebase from "./index.js";
 import { getAllSavedRecipes, deleteRecipe } from "./db.js";
 import { getCurrentUserId } from "./auth.js";
-// import A11yDialog from "a11y-dialog";
 import { getModal, displayModalWithContent } from "./modal.js";
 import { buildRecipeCard } from "./recipe-processor.js";
 
@@ -9,12 +8,12 @@ const savedRecipesContainer = document.querySelector(
   "#saved-recipes-container"
 );
 
-const modalContentWrapper = document.querySelector(".modal-content-wrapper");
+const modalContent = document.querySelector(".modal-content");
 const container = document.querySelector("#modal");
-// const dialog = new A11yDialog(container);
 const modal = getModal(container);
 
 let savedRecipes = [];
+let deleteRecipeId = 0;
 
 // get and display user's saved recipes on page load
 firebase.auth().onAuthStateChanged(async (user) => {
@@ -79,7 +78,7 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
   savedRecipeCard.innerHTML = savedRecipeCardHTML;
   savedRecipeCard
     .querySelector(".delete-btn")
-    .addEventListener("click", deleteSavedRecipe);
+    .addEventListener("click", confirmRecipeDeletion);
   savedRecipeCard
     .querySelector(".view-recipe-details-btn")
     .addEventListener("click", viewRecipeDetails);
@@ -88,35 +87,53 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
 };
 
 async function viewRecipeDetails() {
-  // while (modalContentWrapper.firstChild) {
-  //   modalContentWrapper.removeChild(modalContentWrapper.firstChild);
-  // }
   const recipeData = savedRecipes.find(
     (recipe) => recipe.id === this.dataset.id
   );
   const recipeDetailsCard = buildRecipeCard(recipeData);
-  // recipeDetailsCard.classList.add("modal-content");
-  // recipeDetailsCard.setAttribute("role", "document");
-  // modalContentWrapper.appendChild(recipeDetailsCard);
-  displayModalWithContent(recipeDetailsCard, modalContentWrapper, modal);
+  displayModalWithContent(recipeDetailsCard, modalContent, modal);
   applyToggleContentEventListeners();
-
-  // modal.show();
 }
 
 async function deleteSavedRecipe() {
-  const recipe = document.querySelector(`#id_${this.dataset.id}`);
+  const recipe = document.querySelector(`#id_${deleteRecipeId}`);
   recipe.remove();
   savedRecipes.splice(
     savedRecipes.findIndex((recipe) => {
-      recipe.id === this.dataset.id;
+      recipe.id === deleteRecipeId;
     }),
     1
   );
   if (!savedRecipes.length) {
     displayNoSavedRecipesMsg();
   }
-  await deleteRecipe(getCurrentUserId(), this.dataset.id);
+  await deleteRecipe(getCurrentUserId(), deleteRecipeId);
+}
+
+function confirmRecipeDeletion() {
+  deleteRecipeId = this.dataset.id;
+  const confirmContent = document.createElement("div");
+  confirmContent.setAttribute("class", "confirm-modal");
+  confirmContent.innerHTML = `
+    <div class="confirm-modal">
+      <span>Are you sure you want to delete this recipe?</span>
+      <div class="confirm-modal-action-buttons">
+        <button class="confirm-btn">Yes</button
+        ><button class="cancel-btn">Cancel</button>
+      </div>
+    </div>`;
+
+  confirmContent.querySelector(".confirm-btn").addEventListener("click", () => {
+    deleteSavedRecipe();
+    deleteRecipeId = 0;
+    modal.hide();
+  });
+  confirmContent.querySelector(".cancel-btn").addEventListener("click", () => {
+    deleteRecipeId = 0;
+    modal.hide();
+  });
+
+  displayModalWithContent(confirmContent, modalContent, modal);
 }
 
 const displayNoSavedRecipesMsg = () => {

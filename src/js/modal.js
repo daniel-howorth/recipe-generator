@@ -4,14 +4,12 @@ export const getModal = (container) => {
   return new A11yDialog(container);
 };
 
-export const displayModalWithContent = (content, contentWrapper, modal) => {
-  while (contentWrapper.firstChild) {
-    contentWrapper.removeChild(contentWrapper.firstChild);
+export const displayModalWithContent = (content, modalContent, modal) => {
+  while (modalContent.firstChild) {
+    modalContent.removeChild(modalContent.firstChild);
   }
 
-  content.classList.add("modal-content");
-  content.setAttribute("role", "document");
-  contentWrapper.appendChild(content);
+  modalContent.appendChild(content);
 
   modal.show();
 };

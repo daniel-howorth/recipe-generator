@@ -137,3 +137,21 @@
 .modal-content.card {
   box-shadow: none;
 }
+
+.confirm-modal {
+  background-color: var(--color-white);
+  border-radius: 25px;
+  padding: 24px;
+  text-align: center;
+}
+
+.confirm-modal span {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.confirm-modal-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
