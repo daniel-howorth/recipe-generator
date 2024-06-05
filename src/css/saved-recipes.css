@@ -98,3 +98,42 @@
     font-size: 1.125rem;
   }
 }
+
+.modal-container,
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.modal-container {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container[aria-hidden="true"] {
+  display: none;
+}
+
+.modal-overlay {
+  background-color: rgb(43 46 56 / 0.9);
+}
+
+.modal-content-wrapper {
+  width: min(calc(500 / 16 * 1rem), 95vw);
+}
+
+.modal-content {
+  z-index: 2;
+  position: relative;
+  overflow: auto;
+  max-height: 90vh;
+}
+
+.modal-content.card {
+  box-shadow: none;
+}
