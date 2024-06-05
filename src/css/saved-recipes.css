@@ -147,11 +147,32 @@
 
 .confirm-modal span {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 1.25em;
 }
 
 .confirm-modal-action-buttons {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.confirm-modal-action-buttons button {
+  color: var(--color-white);
+  border-radius: 10px;
+  font-size: 1.1em;
+  padding: 8px 10px;
+  width: calc(100 / 16 * 1rem);
+  border: none;
+  flex-shrink: 0;
+}
+
+.confirm-modal-action-buttons .confirm-btn {
+  background-color: hsl(9, 84%, 55%);
+}
+
+.confirm-modal-action-buttons .cancel-btn {
+  background-color: var(--color-primary-dark);
 }
