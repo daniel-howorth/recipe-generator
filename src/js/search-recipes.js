@@ -68,7 +68,7 @@ async function getRecipes(url, options) {
     }
   } catch (error) {
     console.error("Fetch", error);
-    window.alert("Sorry, there was a problem.");
+    window.alert("Sorry, there was a problem finding recipes.");
   }
 }
 
