@@ -9,6 +9,8 @@ const savedRecipesContainer = document.querySelector(
 );
 
 const modalContentWrapper = document.querySelector(".modal-content-wrapper");
+const container = document.querySelector("#modal");
+const dialog = new A11yDialog(container);
 
 let savedRecipes = [];
 
@@ -37,9 +39,6 @@ const displaySavedRecipes = (savedRecipes) => {
   }
 
   for (let savedRecipeCard of savedRecipeCards) {
-    // savedRecipeCard
-    //   .querySelector(".view-recipe-details-btn")
-    //   .addEventListener("click", viewRecipeDetails);
     savedRecipesContainer.appendChild(savedRecipeCard);
   }
 };
@@ -64,7 +63,7 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
       </div>
       <div class="saved-recipe-action-buttons">
         <button class="view-recipe-details-btn" data-id="${savedRecipeDoc.id}">
-          <img src="../assets/view.svg" alt="eye" data-id="${savedRecipeDoc.id}"/>
+          <img src="../assets/view.svg" alt="eye"/>
           <div class="visually-hidden">view recipe details</div>
         </button>
         <button class="delete-btn" data-id="${savedRecipeDoc.id}">
@@ -74,13 +73,33 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
       </div>
     </article>
   `;
+
   savedRecipeCard.innerHTML = savedRecipeCardHTML;
   savedRecipeCard
-    .querySelectorAll(".delete-btn")
-    .forEach((element) => element.addEventListener("click", deleteSavedRecipe));
+    .querySelector(".delete-btn")
+    .addEventListener("click", deleteSavedRecipe);
+  savedRecipeCard
+    .querySelector(".view-recipe-details-btn")
+    .addEventListener("click", viewRecipeDetails);
 
   return savedRecipeCard;
 };
+
+async function viewRecipeDetails() {
+  while (modalContentWrapper.firstChild) {
+    modalContentWrapper.removeChild(modalContentWrapper.firstChild);
+  }
+  const recipeData = savedRecipes.find(
+    (recipe) => recipe.id === this.dataset.id
+  );
+  const recipeDetailsCard = buildRecipeCard(recipeData);
+  recipeDetailsCard.classList.add("modal-content");
+  recipeDetailsCard.setAttribute("role", "document");
+  modalContentWrapper.appendChild(recipeDetailsCard);
+  applyToggleContentEventListeners();
+
+  dialog.show();
+}
 
 async function deleteSavedRecipe() {
   const recipe = document.querySelector(`#id_${this.dataset.id}`);
@@ -102,25 +121,6 @@ const displayNoSavedRecipesMsg = () => {
   noSavedRecipesMsg.setAttribute("class", "card-wrapper");
   noSavedRecipesMsg.innerHTML = `<div class="card centered-text">You have no saved recipes.</div>`;
   savedRecipesContainer.appendChild(noSavedRecipesMsg);
-};
-
-const container = document.querySelector("#modal");
-const dialog = new A11yDialog(container);
-
-const viewRecipeDetails = (e) => {
-  while (modalContentWrapper.firstChild) {
-    modalContentWrapper.removeChild(modalContentWrapper.firstChild);
-  }
-  const recipeData = savedRecipes.find(
-    (recipe) => recipe.id === e.target.dataset.id
-  );
-  const recipeDetailsCard = buildRecipeCard(recipeData);
-  recipeDetailsCard.classList.add("modal-content");
-  recipeDetailsCard.setAttribute("role", "document");
-  modalContentWrapper.appendChild(recipeDetailsCard);
-  applyToggleContentEventListeners();
-
-  dialog.show();
 };
 
 export function applyToggleContentEventListeners() {
