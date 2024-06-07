@@ -41,3 +41,22 @@ export function validateInput(inputs) {
 
   return validStates.every((state) => state);
 }
+
+export function applyToggleContentEventListeners() {
+  document
+    .querySelectorAll(".toggle-content-btn")
+    .forEach((button) => button.addEventListener("click", toggleContent));
+}
+
+function toggleContent() {
+  const content = document.querySelector(`#${this.dataset.toggle}`);
+  const toggleIcon = this.querySelector("img");
+
+  if (toggleIcon.getAttribute("src").includes("chevron-down")) {
+    toggleIcon.setAttribute("src", "../../assets/chevron-up.svg");
+  } else {
+    toggleIcon.setAttribute("src", "../../assets/chevron-down.svg");
+  }
+
+  content.classList.toggle("hidden");
+}
