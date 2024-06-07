@@ -132,6 +132,7 @@
   position: relative;
   overflow: auto;
   max-height: 90vh;
+  border-radius: 25px;
 }
 
 .modal-content.card {
@@ -175,4 +176,11 @@
 
 .confirm-modal-action-buttons .cancel-btn {
   background-color: var(--color-primary-dark);
+}
+
+.close-modal-btn {
+  position: relative;
+  left: 100%;
+  transform: translateX(-150%);
+  margin-bottom: 8px;
 }
