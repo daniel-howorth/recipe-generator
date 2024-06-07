@@ -51,18 +51,14 @@
         </header>
         <div id="saved-recipes-container"></div>
       </main>
-      <!-- 1. The dialog container -->
       <div
         id="modal"
         class="modal-container"
         aria-labelledby="your-dialog-title-id"
         aria-hidden="true"
       >
-        <!-- 2. The dialog overlay -->
         <div data-a11y-dialog-hide class="modal-overlay"></div>
-        <!-- 3. The actual dialog -->
         <div class="modal-content-wrapper">
-          <!-- 4. The close button -->
           <button
             type="button"
             data-a11y-dialog-hide
@@ -71,11 +67,7 @@
           >
             &times;
           </button>
-          <div class="modal-content" role="document">
-            <!-- 5. The dialog title
-            <h1 id="your-dialog-title-id">Your dialog title</h1>
-            6. Dialog content -->
-          </div>
+          <div class="modal-content" role="document"></div>
         </div>
       </div>
     </div>
