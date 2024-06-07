@@ -30,3 +30,14 @@ export async function signOutUser() {
 export const getCurrentUserId = () => {
   return firebase.auth().currentUser?.uid || null;
 };
+
+export const deleteUserAccount = async () => {
+  try {
+    const user = firebase.auth().currentUser;
+    await user.delete();
+    window.location.href = "index.html";
+  } catch (error) {
+    window.alert("Unable to delete your account.");
+    console.error(error);
+  }
+};

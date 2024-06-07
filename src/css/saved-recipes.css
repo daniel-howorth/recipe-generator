@@ -97,6 +97,8 @@
   }
 }
 
+/* move to modal styles */
+
 .modal-container,
 .modal-overlay {
   position: fixed;
