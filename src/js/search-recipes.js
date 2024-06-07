@@ -3,6 +3,7 @@ import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
+import { applyToggleContentEventListeners } from "./utils.js";
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeWrapper = document.querySelector(".recipe-wrapper");
@@ -87,12 +88,6 @@ function toggleContent() {
   }
 
   content.classList.toggle("hidden");
-}
-
-function applyToggleContentEventListeners() {
-  document
-    .querySelectorAll(".toggle-content-btn")
-    .forEach((button) => button.addEventListener("click", toggleContent));
 }
 
 applyToggleContentEventListeners();

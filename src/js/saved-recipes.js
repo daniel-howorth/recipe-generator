@@ -3,6 +3,7 @@ import { getAllSavedRecipes, deleteRecipe } from "./db.js";
 import { getCurrentUserId } from "./auth.js";
 import { getModal, displayModalWithContent } from "./modal.js";
 import { buildRecipeCard } from "./recipe-processor.js";
+import { applyToggleContentEventListeners } from "./utils.js";
 
 const savedRecipesContainer = document.querySelector(
   "#saved-recipes-container"
@@ -142,22 +143,3 @@ const displayNoSavedRecipesMsg = () => {
   noSavedRecipesMsg.innerHTML = `<div class="card centered-text">You have no saved recipes.</div>`;
   savedRecipesContainer.appendChild(noSavedRecipesMsg);
 };
-
-export function applyToggleContentEventListeners() {
-  document
-    .querySelectorAll(".toggle-content-btn")
-    .forEach((button) => button.addEventListener("click", toggleContent));
-}
-
-function toggleContent() {
-  const content = document.querySelector(`#${this.dataset.toggle}`);
-  const toggleIcon = this.querySelector("img");
-
-  if (toggleIcon.getAttribute("src").includes("chevron-down")) {
-    toggleIcon.setAttribute("src", "../../assets/chevron-up.svg");
-  } else {
-    toggleIcon.setAttribute("src", "../../assets/chevron-down.svg");
-  }
-
-  content.classList.toggle("hidden");
-}
