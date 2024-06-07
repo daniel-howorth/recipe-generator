@@ -8,6 +8,7 @@ module.exports = {
     "analyse-recipes": "./src/js/analyse-recipes.js",
     "calculate-macros": "./src/js/calculate-macros.js",
     "saved-recipes": "./src/js/saved-recipes.js",
+    profile: "./src/js/profile.js",
   },
   // The location of the build folder
   output: {

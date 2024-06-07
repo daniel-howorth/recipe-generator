@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analyse Recipes</title>
+    <title>Recipe Generator</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/analyse-recipes.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,50 +31,53 @@
               <div class="visually-hidden">log out button</div>
             </button>
           </div>
-
           <ul class="main-nav">
             <li><a href="./search-recipes.html">Search Recipes</a></li>
             <li><a href="./calculate-macros.html">Calculate Macros</a></li>
-            <li class="active-page-link">Analyse Recipes</li>
+            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
             <li><a href="./saved-recipes.html">Saved Recipes</a></li>
           </ul>
           <ul class="second-nav">
-            <li><a href="./profile.html">Profile</a></li>
+            <li class="active-page-link">Profile</li>
             <li class="logout">Logout</li>
           </ul>
         </nav>
       </div>
       <main>
         <header class="page-header">
-          <h1>Analyse Recipes</h1>
-          <p>Get a nutritional breakdown of any recipe.</p>
+          <h1>Profile</h1>
+          <p>Manage your user profile.</p>
         </header>
         <div class="card-wrapper">
           <article class="card">
-            <form>
-              <p class="form-instruction">
-                Enter each ingredient and its quantity from the recipe you want
-                to analyse, in a comma separated list. If you don't provide the
-                quantity, 100 grams will be used for that ingredient.
-              </p>
-              <label for="recipeToAnalyse"
-                >Recipe
-                <input
-                  type="text"
-                  id="recipeToAnalyse"
-                  class="full-width"
-                  placeholder="1lb beef brisket, 10z white onion, 3 tomatoes"
-                />
-              </label>
-              <button class="search-btn">Analyse Recipe</button>
-            </form>
+            <div id="profile-info">
+              <span id="email-address-label">Email Address: </span
+              ><span id="email-address-value"></span>
+            </div>
+            <button id="delete-btn">Delete Account</button>
           </article>
         </div>
-        <div class="card-wrapper nutritional-breakdown-wrapper hidden">
-          <article class="card nutritional-breakdown"></article>
-        </div>
       </main>
+      <div
+        id="modal"
+        class="modal-container"
+        aria-labelledby="your-dialog-title-id"
+        aria-hidden="true"
+      >
+        <div data-a11y-dialog-hide class="modal-overlay"></div>
+        <div class="modal-content-wrapper">
+          <button
+            type="button"
+            data-a11y-dialog-hide
+            aria-label="Close dialog"
+            class="close-modal-btn"
+          >
+            &times;
+          </button>
+          <div class="modal-content" role="document"></div>
+        </div>
+      </div>
     </div>
-    <script type="module" src="../dist/analyse-recipes.bundle.js"></script>
+    <script type="module" src="../dist/profile.bundle.js"></script>
   </body>
 </html>

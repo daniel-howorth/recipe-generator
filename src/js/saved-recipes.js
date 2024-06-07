@@ -1,6 +1,6 @@
 import firebase from "./index.js";
 import { getAllSavedRecipes, deleteRecipe } from "./db.js";
-import { getCurrentUserId } from "./auth.js";
+import { getCurrentUserId, signOutUser } from "./auth.js";
 import { getModal, displayModalWithContent } from "./modal.js";
 import { buildRecipeCard } from "./recipe-processor.js";
 import { applyToggleContentEventListeners } from "./utils.js";
@@ -143,3 +143,6 @@ const displayNoSavedRecipesMsg = () => {
   noSavedRecipesMsg.innerHTML = `<div class="card centered-text">You have no saved recipes.</div>`;
   savedRecipesContainer.appendChild(noSavedRecipesMsg);
 };
+
+const logoutBtns = document.querySelectorAll(".logout");
+logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));

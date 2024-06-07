@@ -93,9 +93,12 @@ ul.main-nav li {
   padding-right: 32px;
 }
 
-ul.main-nav .active-page-link {
+.active-page-link {
   background-color: var(--color-accent);
   color: var(--color-primary-dark);
+}
+
+ul.main-nav .active-page-link {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 32px;
@@ -112,6 +115,11 @@ ul.second-nav {
 ul.second-nav li {
   padding: 16px 0;
   border-top: 1px solid var(--color-primary-light);
+}
+
+ul.second-nav li.active-page-link,
+li.active-page-link + li {
+  border-top-color: var(--color-accent);
 }
 
 .nav-buttons-group {
@@ -461,10 +469,6 @@ button.toggle-content-btn {
     cursor: pointer;
   }
 
-  /* nav ul.main-nav li:not(.active-page-link):hover {
-    color: var(--color-accent);
-  } */
-
   nav li.active-page-link {
     cursor: default;
   }
@@ -473,15 +477,8 @@ button.toggle-content-btn {
     color: var(--color-accent);
   }
 
-  /* change to target a */
-  nav ul.second-nav li:hover {
-    background-color: var(--color-accent);
-    border-top-color: var(--color-accent);
-    color: var(--color-primary-dark);
-  }
-
-  nav ul.second-nav li:hover + li {
-    border-top-color: var(--color-accent);
+  nav ul.second-nav li:not(.active-page-link):hover {
+    color: var(--color-accent);
   }
 }
 
