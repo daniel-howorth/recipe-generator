@@ -1,9 +1,15 @@
 import { isNumber } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser } from "./auth.js";
+import { getModal } from "./modal.js";
 
 const analyseRecipeBtn = document.querySelector(".search-btn");
 const nutritionalBreakdown = document.querySelector(".nutritional-breakdown");
+
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
+const mobileMenuModal = getModal(mobileMenuContainer);
+mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
 const baseURL = "https://api.calorieninjas.com/v1/";
 

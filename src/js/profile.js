@@ -8,6 +8,11 @@ const modalContent = document.querySelector(".modal-content");
 const container = document.querySelector("#modal");
 const modal = getModal(container);
 
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
+const mobileMenuModal = getModal(mobileMenuContainer);
+mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
+
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log("current user:", user.uid);
