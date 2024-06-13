@@ -601,3 +601,59 @@ button.toggle-content-btn {
     margin: 0;
   }
 }
+
+/* mobile menu styles */
+
+.mobile-menu.modal-content-wrapper {
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--color-white);
+  z-index: 2;
+  width: min(100%, 300px);
+  position: relative;
+}
+
+#mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background-color: var(--color-primary-dark);
+}
+
+#mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: calc(24 / 16 * 1rem);
+}
+
+#mobile-menu li {
+  list-style-type: none;
+}
+
+#mobile-menu a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+}
+
+#mobile-menu li.active-page-link {
+  color: var(--color-accent);
+  background-color: revert;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #mobile-menu a:hover {
+    color: var(--color-accent);
+  }
+}
+
+#close-mobile-menu-btn {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: var(--color-primary-dark);
+  border: none;
+  right: 15px;
+  top: 15px;
+}
