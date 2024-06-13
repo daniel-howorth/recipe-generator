@@ -57,7 +57,6 @@ export const deleteRecipe = async (userId, recipeId) => {
 };
 
 export const getAllSavedRecipes = async (userId) => {
-  console.log(userId);
   try {
     const querySnapshot = await db
       .collection("users")

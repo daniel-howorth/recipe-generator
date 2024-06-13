@@ -5,6 +5,11 @@ import { getModal, displayModalWithContent } from "./modal.js";
 import { buildRecipeCard } from "./recipe-processor.js";
 import { applyToggleContentEventListeners } from "./utils.js";
 
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
+const mobileMenuModal = getModal(mobileMenuContainer);
+mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
+
 const savedRecipesContainer = document.querySelector(
   "#saved-recipes-container"
 );
