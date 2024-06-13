@@ -1,6 +1,7 @@
 import { validateInput } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser } from "./auth.js";
+import { getModal } from "./modal.js";
 
 const macroTargetsCard = document.querySelector(".macro-targets");
 const getTargetsBtn = document.querySelector(".search-btn");
@@ -11,6 +12,11 @@ const age = document.querySelector("#ageInput");
 const activityLevel = document.querySelector("#activityLevelInput");
 const fitnessGoal = document.querySelector("#fitnessGoalInput");
 const unpopulatedInputsMsg = document.querySelector(".unpopulatedInputsMsg");
+
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
+const mobileMenuModal = getModal(mobileMenuContainer);
+mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
 getTargetsBtn.addEventListener("click", (e) => {
   e.preventDefault();

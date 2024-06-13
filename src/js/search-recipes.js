@@ -4,6 +4,12 @@ import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
 import { applyToggleContentEventListeners } from "./utils.js";
+import { getModal } from "./modal.js";
+
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
+const mobileMenuModal = getModal(mobileMenuContainer);
+mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
 const searchBtn = document.querySelector("button.search-btn");
 const recipeWrapper = document.querySelector(".recipe-wrapper");

@@ -19,7 +19,11 @@
       <div class="side-nav-container">
         <nav class="side-nav">
           <button class="nav-btn">
-            <img src="../assets/menu.svg" alt="menu button" />
+            <img
+              src="../assets/menu.svg"
+              alt="menu button"
+              id="mobile-menu-btn"
+            />
             <div class="visually-hidden">menu button</div>
           </button>
           <div class="nav-buttons-group">
@@ -76,6 +80,32 @@
             &times;
           </button>
           <div class="modal-content" role="document"></div>
+        </div>
+      </div>
+      <div
+        id="mobile-menu-modal"
+        class="mobile-menu modal-container"
+        aria-labelledby="mobile-menu-modal"
+        aria-hidden="true"
+      >
+        <div data-a11y-dialog-hide class="modal-overlay"></div>
+        <div class="mobile-menu modal-content-wrapper">
+          <button
+            type="button"
+            data-a11y-dialog-hide
+            aria-label="Close dialog"
+            id="close-mobile-menu-btn"
+          >
+            <img src="../assets/close.svg" alt="x" />
+          </button>
+          <div id="mobile-menu-content" role="document">
+            <ul id="mobile-menu">
+              <li><a href="./search-recipes.html">Search Recipes</a></li>
+              <li><a href="./calculate-macros.html">Calculate Macros</a></li>
+              <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
+              <li><a href="./saved-recipes.html">Saved Recipes</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

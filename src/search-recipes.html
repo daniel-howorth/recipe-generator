@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Generator</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/modal-styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +18,11 @@
       <div class="side-nav-container">
         <nav class="side-nav">
           <button class="nav-btn">
-            <img src="../assets/menu.svg" alt="menu button" />
+            <img
+              src="../assets/menu.svg"
+              alt="menu button"
+              id="mobile-menu-btn"
+            />
             <div class="visually-hidden">menu button</div>
           </button>
           <div class="nav-buttons-group">
@@ -228,6 +233,32 @@
         </div>
         <div class="recipe-wrapper card-wrapper hidden"></div>
       </main>
+      <div
+        id="mobile-menu-modal"
+        class="mobile-menu modal-container"
+        aria-labelledby="mobile-menu-modal"
+        aria-hidden="true"
+      >
+        <div data-a11y-dialog-hide class="modal-overlay"></div>
+        <div class="mobile-menu modal-content-wrapper">
+          <button
+            type="button"
+            data-a11y-dialog-hide
+            aria-label="Close dialog"
+            id="close-mobile-menu-btn"
+          >
+            <img src="../assets/close.svg" alt="x" />
+          </button>
+          <div id="mobile-menu-content" role="document">
+            <ul id="mobile-menu">
+              <li class="active-page-link">Search Recipes</li>
+              <li><a href="./calculate-macros.html">Calculate Macros</a></li>
+              <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
+              <li><a href="./saved-recipes.html">Saved Recipes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <script type="module" src="../dist/search-recipes.bundle.js"></script>
   </body>
