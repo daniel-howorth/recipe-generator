@@ -15,250 +15,293 @@
   </head>
   <body>
     <div class="app-wrapper">
-      <div class="side-nav-container">
-        <nav class="side-nav">
-          <button class="nav-btn">
-            <img
-              src="../assets/menu.svg"
-              alt="menu button"
-              id="mobile-menu-btn"
-            />
-            <div class="visually-hidden">menu button</div>
-          </button>
-          <div class="nav-buttons-group">
+      <div class="app-body">
+        <div class="side-nav-container">
+          <nav class="side-nav">
             <button class="nav-btn">
-              <a href="./profile.html"
-                ><img src="../assets/profile.svg" alt="profile button" />
-                <div class="visually-hidden">profile button</div></a
-              >
+              <img
+                src="../assets/menu.svg"
+                alt="menu button"
+                id="mobile-menu-btn"
+              />
+              <div class="visually-hidden">menu button</div>
             </button>
-            <button class="nav-btn logout">
-              <img src="../assets/log-out.svg" alt="log out button" />
-              <div class="visually-hidden">log out button</div>
-            </button>
-          </div>
-
-          <ul class="main-nav">
-            <li class="active-page-link">Search Recipes</li>
-            <li><a href="./calculate-macros.html">Calculate Macros</a></li>
-            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
-            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
-          </ul>
-          <ul class="second-nav">
-            <li><a href="./profile.html">Profile</a></li>
-            <li class="logout">Logout</li>
-          </ul>
-        </nav>
-      </div>
-      <main>
-        <header class="page-header">
-          <h1>Search Recipes</h1>
-          <p>Search for recipes based on your nutritional requirements.</p>
-        </header>
-        <div class="card-wrapper">
-          <article class="card">
-            <header class="section-header">
-              <h2>Nutritional Requirements</h2>
-              <button
-                class="toggle-content-btn"
-                data-toggle="nutritional-requirements"
-              >
-                <div class="visually-hidden">Toggle nutritional content.</div>
-                <img
-                  src="../assets/chevron-up.svg"
-                  alt="chevron"
-                  id="searchFormToggleIcon"
-                />
+            <div class="nav-buttons-group">
+              <button class="nav-btn">
+                <a href="./profile.html"
+                  ><img src="../assets/profile.svg" alt="profile button" />
+                  <div class="visually-hidden">profile button</div></a
+                >
               </button>
-            </header>
+              <button class="nav-btn logout">
+                <img src="../assets/log-out.svg" alt="log out button" />
+                <div class="visually-hidden">log out button</div>
+              </button>
+            </div>
 
-            <form id="nutritional-requirements">
-              <p class="form-instruction">
-                Fill in any of your nutritional requirements, or leave all
-                fields blank to generate random recipes.
-              </p>
-              <label for="cuisine"
-                >Cuisine
-                <input
-                  type="text"
-                  id="cuisine"
-                  class="full-width"
-                  placeholder="italian, chinese, spanish"
-                /><span class="invalid-label hidden"
-                  >Please enter one or more comma separated cuisine
-                  values.</span
-                ></label
-              >
-              <label for="diet"
-                >Diet
-                <input
-                  type="text"
-                  id="diet"
-                  class="full-width"
-                  placeholder="vegetarian, pescetarian, paleo"
-                /><span class="invalid-label hidden"
-                  >Please enter one or more comma separated diet values.</span
-                ></label
-              >
-              <label for="type"
-                >Meal Type
-                <input
-                  type="text"
-                  id="type"
-                  class="full-width"
-                  placeholder="dinner, lunch, breakfast"
-                /><span class="invalid-label hidden"
-                  >Please enter one or more comma separated meal type
-                  values.</span
-                ></label
-              >
-              <label for="intolerances"
-                >Intolerances
-                <input
-                  type="text"
-                  id="intolerances"
-                  class="full-width"
-                  placeholder="dairy, gluten, sesame"
-                /><span class="invalid-label hidden"
-                  >Please enter one or more comma separated intolerance
-                  values.</span
-                ></label
-              >
-              <div class="macro-input">
-                <label for="minCalories"
-                  >Min Calories (kcal)
-                  <input
-                    type="text"
-                    id="minCalories"
-                    class="number-input"
-                    placeholder="200"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-                <label for="maxCalories"
-                  >Max Calories (kcal)
-                  <input
-                    type="text"
-                    id="maxCalories"
-                    class="number-input"
-                    placeholder="850"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-              </div>
-              <div class="macro-input">
-                <label for="minProtein"
-                  >Min Protein (g)
-                  <input
-                    type="text"
-                    id="minProtein"
-                    class="number-input"
-                    placeholder="20"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-                <label for="maxProtein"
-                  >Max Protein (g)
-                  <input
-                    type="text"
-                    id="maxProtein"
-                    class="number-input"
-                    placeholder="80"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-              </div>
-              <div class="macro-input">
-                <label for="minCarbs"
-                  >Min Carbs (g)
-                  <input
-                    type="text"
-                    id="minCarbs"
-                    class="number-input"
-                    placeholder="60"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-                <label for="maxCabs"
-                  >Max Carbs (g)
-                  <input
-                    type="text"
-                    id="maxCarbs"
-                    class="number-input"
-                    placeholder="100"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-              </div>
-              <div class="macro-input">
-                <label for="minFat"
-                  >Min Fat (g)
-                  <input
-                    type="text"
-                    id="minFat"
-                    class="number-input"
-                    placeholder="10"
-                    size="5"
-                  /><span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-                <label for="maxFat"
-                  >Max Fat (g)
-                  <input
-                    type="text"
-                    id="maxFat"
-                    class="number-input"
-                    placeholder="20"
-                    size="5"
-                  />
-                  <span class="invalid-label hidden"
-                    >Please enter a positive numeric value</span
-                  ></label
-                >
-              </div>
-              <button class="search-btn">Search Recipes</button>
-            </form>
-          </article>
-        </div>
-        <div class="recipe-wrapper card-wrapper hidden"></div>
-      </main>
-      <div
-        id="mobile-menu-modal"
-        class="mobile-menu modal-container"
-        aria-labelledby="mobile-menu-modal"
-        aria-hidden="true"
-      >
-        <div data-a11y-dialog-hide class="modal-overlay"></div>
-        <div class="mobile-menu modal-content-wrapper">
-          <button
-            type="button"
-            data-a11y-dialog-hide
-            aria-label="Close dialog"
-            id="close-mobile-menu-btn"
-          >
-            <img src="../assets/close.svg" alt="x" />
-          </button>
-          <div id="mobile-menu-content" role="document">
-            <ul id="mobile-menu">
+            <ul class="main-nav">
               <li class="active-page-link">Search Recipes</li>
               <li><a href="./calculate-macros.html">Calculate Macros</a></li>
               <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
               <li><a href="./saved-recipes.html">Saved Recipes</a></li>
             </ul>
+            <ul class="second-nav">
+              <li><a href="./profile.html">Profile</a></li>
+              <li class="logout">Logout</li>
+            </ul>
+          </nav>
+        </div>
+        <main>
+          <header class="page-header">
+            <h1>Search Recipes</h1>
+            <p>Search for recipes based on your nutritional requirements.</p>
+          </header>
+          <div class="card-wrapper">
+            <article class="card">
+              <header class="section-header">
+                <h2>Nutritional Requirements</h2>
+                <button
+                  class="toggle-content-btn"
+                  data-toggle="nutritional-requirements"
+                >
+                  <div class="visually-hidden">Toggle nutritional content.</div>
+                  <img
+                    src="../assets/chevron-up.svg"
+                    alt="chevron"
+                    id="searchFormToggleIcon"
+                  />
+                </button>
+              </header>
+
+              <form id="nutritional-requirements">
+                <p class="form-instruction">
+                  Fill in any of your nutritional requirements, or leave all
+                  fields blank to generate random recipes.
+                </p>
+                <label for="cuisine"
+                  >Cuisine
+                  <input
+                    type="text"
+                    id="cuisine"
+                    class="full-width"
+                    placeholder="italian, chinese, spanish"
+                  /><span class="invalid-label hidden"
+                    >Please enter one or more comma separated cuisine
+                    values.</span
+                  ></label
+                >
+                <label for="diet"
+                  >Diet
+                  <input
+                    type="text"
+                    id="diet"
+                    class="full-width"
+                    placeholder="vegetarian, pescetarian, paleo"
+                  /><span class="invalid-label hidden"
+                    >Please enter one or more comma separated diet values.</span
+                  ></label
+                >
+                <label for="type"
+                  >Meal Type
+                  <input
+                    type="text"
+                    id="type"
+                    class="full-width"
+                    placeholder="dinner, lunch, breakfast"
+                  /><span class="invalid-label hidden"
+                    >Please enter one or more comma separated meal type
+                    values.</span
+                  ></label
+                >
+                <label for="intolerances"
+                  >Intolerances
+                  <input
+                    type="text"
+                    id="intolerances"
+                    class="full-width"
+                    placeholder="dairy, gluten, sesame"
+                  /><span class="invalid-label hidden"
+                    >Please enter one or more comma separated intolerance
+                    values.</span
+                  ></label
+                >
+                <div class="macro-input">
+                  <label for="minCalories"
+                    >Min Calories (kcal)
+                    <input
+                      type="text"
+                      id="minCalories"
+                      class="number-input"
+                      placeholder="200"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                  <label for="maxCalories"
+                    >Max Calories (kcal)
+                    <input
+                      type="text"
+                      id="maxCalories"
+                      class="number-input"
+                      placeholder="850"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                </div>
+                <div class="macro-input">
+                  <label for="minProtein"
+                    >Min Protein (g)
+                    <input
+                      type="text"
+                      id="minProtein"
+                      class="number-input"
+                      placeholder="20"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                  <label for="maxProtein"
+                    >Max Protein (g)
+                    <input
+                      type="text"
+                      id="maxProtein"
+                      class="number-input"
+                      placeholder="80"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                </div>
+                <div class="macro-input">
+                  <label for="minCarbs"
+                    >Min Carbs (g)
+                    <input
+                      type="text"
+                      id="minCarbs"
+                      class="number-input"
+                      placeholder="60"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                  <label for="maxCabs"
+                    >Max Carbs (g)
+                    <input
+                      type="text"
+                      id="maxCarbs"
+                      class="number-input"
+                      placeholder="100"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                </div>
+                <div class="macro-input">
+                  <label for="minFat"
+                    >Min Fat (g)
+                    <input
+                      type="text"
+                      id="minFat"
+                      class="number-input"
+                      placeholder="10"
+                      size="5"
+                    /><span class="invalid-label hidden"
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                  <label for="maxFat"
+                    >Max Fat (g)
+                    <input
+                      type="text"
+                      id="maxFat"
+                      class="number-input"
+                      placeholder="20"
+                      size="5"
+                    />
+                    <span class="invalid-label hidden" s
+                      >Please enter a positive numeric value</span
+                    ></label
+                  >
+                </div>
+                <button class="search-btn">Search Recipes</button>
+              </form>
+            </article>
           </div>
+          <div class="recipe-wrapper card-wrapper hidden"></div>
+        </main>
+      </div>
+      <footer>
+        <div class="footer-content">
+          <div class="footer-content-section">
+            <div class="author">
+              <p>Developed by Daniel Howorth</p>
+              <div class="contacts">
+                <div class="contact-container">
+                  <a
+                    href="https://www.linkedin.com/in/daniel-howorth/"
+                    target="_blank"
+                    ><img src="../assets/linkedin.svg" alt="linkedin logo"
+                  /></a>
+                </div>
+                <div class="contact-container">
+                  <a href="https://github.com/daniel-howorth" target="_blank"
+                    ><img src="../assets/github.svg" alt="github logo"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-content-section">
+            <div class="attribution">
+              <p>Powered by:</p>
+              <ul>
+                <li>
+                  <a href="https://spoonacular.com/food-api" target="_blank"
+                    >Spoonacular</a
+                  >
+                </li>
+                <li>
+                  <a href="https://calorieninjas.com/" target="_blank"
+                    >CalorieNinjas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="footer-bottom">© 2024 Daniel Howorth. All Rights Reserved.</p>
+      </footer>
+    </div>
+    <div
+      id="mobile-menu-modal"
+      class="mobile-menu modal-container"
+      aria-labelledby="mobile-menu-modal"
+      aria-hidden="true"
+    >
+      <div data-a11y-dialog-hide class="modal-overlay"></div>
+      <div class="mobile-menu modal-content-wrapper">
+        <button
+          type="button"
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+          id="close-mobile-menu-btn"
+        >
+          <img src="../assets/close.svg" alt="x" />
+        </button>
+        <div id="mobile-menu-content" role="document">
+          <ul id="mobile-menu">
+            <li class="active-page-link">Search Recipes</li>
+            <li><a href="./calculate-macros.html">Calculate Macros</a></li>
+            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
+            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
+          </ul>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 :root {
   --color-primary: hsl(199, 89%, 48%);
-  --color-primary-light: hsl(201, 94%, 86%);
+  --color-primary-light: #bae5fd;
   --color-primary-dark: hsl(204, 80%, 16%);
   --color-white: hsl(0, 0%, 100%);
   --color-off-white: hsl(203, 94%, 94%);
@@ -55,9 +55,13 @@ select {
 }
 
 .app-wrapper {
-  min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
 }
 
 .side-nav-container {
@@ -508,7 +512,7 @@ button.toggle-content-btn {
 }
 
 @media (max-width: calc(700 / 16 * 1rem)) {
-  .app-wrapper {
+  .app-body {
     flex-direction: column;
   }
 
@@ -656,4 +660,88 @@ button.toggle-content-btn {
   border: none;
   right: 15px;
   top: 15px;
+}
+
+footer {
+  min-height: 150px;
+  background-color: var(--color-gray-50);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 48px 80px 4px;
+}
+
+footer .footer-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+footer .footer-content-section {
+  flex: 1;
+}
+
+footer .author {
+  margin: auto;
+}
+
+footer .author p {
+  font-weight: 600;
+  font-size: calc(18 / 16 * 1rem);
+  color: var(--color-primary-light);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+footer .contacts {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+footer .contacts .contact-container {
+  height: calc(40 / 16 * 1rem);
+  width: calc(40 / 16 * 1rem);
+}
+
+footer .attribution {
+  margin: auto;
+  text-align: center;
+}
+
+footer .attribution p {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: calc(18 / 16 * 1rem);
+  color: var(--color-primary-light);
+}
+
+footer .attribution ul {
+  padding: 0;
+}
+
+footer .attribution li {
+  list-style-type: none;
+}
+
+footer .attribution a {
+  text-decoration: none;
+  color: white;
+}
+
+footer .attribution a:visited {
+  color: white;
+}
+
+footer .attribution a:hover {
+  color: var(--color-accent);
+}
+
+footer .footer-bottom {
+  margin: auto;
+  font-size: 0.75rem;
+  text-align: center;
 }
