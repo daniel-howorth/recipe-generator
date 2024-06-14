@@ -17,7 +17,7 @@ const recipeWrapper = document.querySelector(".recipe-wrapper");
 let currentRecipeData = {};
 let recipeIsSaved = "";
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=chicken&instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 
 const options = {
   method: "GET",
@@ -61,6 +61,7 @@ function buildUrl(inputs) {
     }
   });
 
+  console.log(url);
   return url;
 }
 
