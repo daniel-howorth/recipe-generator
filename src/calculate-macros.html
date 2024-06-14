@@ -16,148 +16,194 @@
   </head>
   <body>
     <div class="app-wrapper">
-      <div class="side-nav-container">
-        <nav class="side-nav">
-          <button class="nav-btn">
-            <img
-              src="../assets/menu.svg"
-              alt="menu button"
-              id="mobile-menu-btn"
-            />
-            <div class="visually-hidden">menu button</div>
-          </button>
-          <div class="nav-buttons-group">
+      <div class="app-body">
+        <div class="side-nav-container">
+          <nav class="side-nav">
             <button class="nav-btn">
-              <a href="./profile.html"
-                ><img src="../assets/profile.svg" alt="profile button" />
-                <div class="visually-hidden">profile button</div></a
-              >
+              <img
+                src="../assets/menu.svg"
+                alt="menu button"
+                id="mobile-menu-btn"
+              />
+              <div class="visually-hidden">menu button</div>
             </button>
-            <button class="nav-btn logout">
-              <img src="../assets/log-out.svg" alt="log out button" />
-              <div class="visually-hidden">log out button</div>
-            </button>
-          </div>
+            <div class="nav-buttons-group">
+              <button class="nav-btn">
+                <a href="./profile.html"
+                  ><img src="../assets/profile.svg" alt="profile button" />
+                  <div class="visually-hidden">profile button</div></a
+                >
+              </button>
+              <button class="nav-btn logout">
+                <img src="../assets/log-out.svg" alt="log out button" />
+                <div class="visually-hidden">log out button</div>
+              </button>
+            </div>
 
-          <ul class="main-nav">
-            <li><a href="./search-recipes.html">Search Recipes</a></li>
-            <li class="active-page-link">Calculate Macros</li>
-            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
-            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
-          </ul>
-          <ul class="second-nav">
-            <li><a href="./profile.html">Profile</a></li>
-            <li class="logout">Logout</li>
-          </ul>
-        </nav>
-      </div>
-      <main>
-        <header class="page-header">
-          <h1>Calculate Macro Targets</h1>
-          <p>Calculate your daily macro targets based on your fitness goals.</p>
-        </header>
-        <div class="card-wrapper">
-          <article class="card">
-            <span class="unpopulatedInputsMsg hidden"
-              >*Please complete all fields.</span
-            >
-            <form>
-              <label for="genderInput"
-                >Gender
-                <select id="genderInput" required>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </label>
-              <label for="weightInput"
-                >Weight (kg)
-                <input
-                  type="text"
-                  id="weightInput"
-                  class="number-input"
-                  placeholder="100"
-                  required
-                />
-                <span class="invalid-label hidden"
-                  >Please enter a positive numeric value.</span
-                >
-              </label>
-              <label for="heightInput"
-                >Height (cm)
-                <input
-                  type="text"
-                  id="heightInput"
-                  class="number-input"
-                  placeholder="183"
-                  required
-                />
-                <span class="invalid-label hidden"
-                  >Please enter a positive numeric value.</span
-                >
-              </label>
-              <label for="ageInput"
-                >Age (yrs)
-                <input
-                  type="text"
-                  id="ageInput"
-                  class="number-input"
-                  placeholder="25"
-                  required
-                />
-                <span class="invalid-label hidden"
-                  >Please enter a positive numeric value.</span
-                >
-              </label>
-              <label for="activityLevelInput"
-                >Activity Level
-                <select id="activityLevelInput" required>
-                  <option value="sedentary">Sedentary</option>
-                  <option value="lightly-active">Lightly active</option>
-                  <option value="moderately-active">Moderately active</option>
-                  <option value="very-active">Very active</option>
-                  <option value="super-active">Super active</option>
-                </select>
-              </label>
-              <label for="fitnessGoalInput"
-                >Fitness Goal
-                <select id="fitnessGoalInput" required>
-                  <option value="weight-loss">Weight loss</option>
-                  <option value="weight-gain">Weight gain</option>
-                  <option value="maintenance">Maintenance</option>
-                </select>
-              </label>
-              <button class="search-btn">Get Targets</button>
-            </form>
-          </article>
-        </div>
-        <div class="card-wrapper macro-targets-wrapper hidden">
-          <article class="card macro-targets"></article>
-        </div>
-      </main>
-      <div
-        id="mobile-menu-modal"
-        class="mobile-menu modal-container"
-        aria-labelledby="mobile-menu-modal"
-        aria-hidden="true"
-      >
-        <div data-a11y-dialog-hide class="modal-overlay"></div>
-        <div class="mobile-menu modal-content-wrapper">
-          <button
-            type="button"
-            data-a11y-dialog-hide
-            aria-label="Close dialog"
-            id="close-mobile-menu-btn"
-          >
-            <img src="../assets/close.svg" alt="x" />
-          </button>
-          <div id="mobile-menu-content" role="document">
-            <ul id="mobile-menu">
+            <ul class="main-nav">
               <li><a href="./search-recipes.html">Search Recipes</a></li>
               <li class="active-page-link">Calculate Macros</li>
               <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
               <li><a href="./saved-recipes.html">Saved Recipes</a></li>
             </ul>
+            <ul class="second-nav">
+              <li><a href="./profile.html">Profile</a></li>
+              <li class="logout">Logout</li>
+            </ul>
+          </nav>
+        </div>
+        <main>
+          <header class="page-header">
+            <h1>Calculate Macro Targets</h1>
+            <p>
+              Calculate your daily macro targets based on your fitness goals.
+            </p>
+          </header>
+          <div class="card-wrapper">
+            <article class="card">
+              <span class="unpopulatedInputsMsg hidden"
+                >*Please complete all fields.</span
+              >
+              <form>
+                <label for="genderInput"
+                  >Gender
+                  <select id="genderInput" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </label>
+                <label for="weightInput"
+                  >Weight (kg)
+                  <input
+                    type="text"
+                    id="weightInput"
+                    class="number-input"
+                    placeholder="100"
+                    required
+                  />
+                  <span class="invalid-label hidden"
+                    >Please enter a positive numeric value.</span
+                  >
+                </label>
+                <label for="heightInput"
+                  >Height (cm)
+                  <input
+                    type="text"
+                    id="heightInput"
+                    class="number-input"
+                    placeholder="183"
+                    required
+                  />
+                  <span class="invalid-label hidden"
+                    >Please enter a positive numeric value.</span
+                  >
+                </label>
+                <label for="ageInput"
+                  >Age (yrs)
+                  <input
+                    type="text"
+                    id="ageInput"
+                    class="number-input"
+                    placeholder="25"
+                    required
+                  />
+                  <span class="invalid-label hidden"
+                    >Please enter a positive numeric value.</span
+                  >
+                </label>
+                <label for="activityLevelInput"
+                  >Activity Level
+                  <select id="activityLevelInput" required>
+                    <option value="sedentary">Sedentary</option>
+                    <option value="lightly-active">Lightly active</option>
+                    <option value="moderately-active">Moderately active</option>
+                    <option value="very-active">Very active</option>
+                    <option value="super-active">Super active</option>
+                  </select>
+                </label>
+                <label for="fitnessGoalInput"
+                  >Fitness Goal
+                  <select id="fitnessGoalInput" required>
+                    <option value="weight-loss">Weight loss</option>
+                    <option value="weight-gain">Weight gain</option>
+                    <option value="maintenance">Maintenance</option>
+                  </select>
+                </label>
+                <button class="search-btn">Get Targets</button>
+              </form>
+            </article>
           </div>
+          <div class="card-wrapper macro-targets-wrapper hidden">
+            <article class="card macro-targets"></article>
+          </div>
+        </main>
+      </div>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-content-section">
+            <div class="author">
+              <p>Developed by Daniel Howorth</p>
+              <div class="contacts">
+                <div class="contact-container">
+                  <a
+                    href="https://www.linkedin.com/in/daniel-howorth/"
+                    target="_blank"
+                    ><img src="../assets/linkedin.svg" alt="linkedin logo"
+                  /></a>
+                </div>
+                <div class="contact-container">
+                  <a href="https://github.com/daniel-howorth" target="_blank"
+                    ><img src="../assets/github.svg" alt="github logo"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-content-section">
+            <div class="attribution">
+              <p>Powered by:</p>
+              <ul>
+                <li>
+                  <a href="https://spoonacular.com/food-api" target="_blank"
+                    >Spoonacular</a
+                  >
+                </li>
+                <li>
+                  <a href="https://calorieninjas.com/" target="_blank"
+                    >CalorieNinjas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="footer-bottom">© 2024 Daniel Howorth. All Rights Reserved.</p>
+      </footer>
+    </div>
+    <div
+      id="mobile-menu-modal"
+      class="mobile-menu modal-container"
+      aria-labelledby="mobile-menu-modal"
+      aria-hidden="true"
+    >
+      <div data-a11y-dialog-hide class="modal-overlay"></div>
+      <div class="mobile-menu modal-content-wrapper">
+        <button
+          type="button"
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+          id="close-mobile-menu-btn"
+        >
+          <img src="../assets/close.svg" alt="x" />
+        </button>
+        <div id="mobile-menu-content" role="document">
+          <ul id="mobile-menu">
+            <li><a href="./search-recipes.html">Search Recipes</a></li>
+            <li class="active-page-link">Calculate Macros</li>
+            <li><a href="./analyse-recipes.html">Analyse Recipes</a></li>
+            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
+          </ul>
         </div>
       </div>
     </div>

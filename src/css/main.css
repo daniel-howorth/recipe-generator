@@ -156,6 +156,8 @@ main {
   align-items: center;
   gap: 40px;
   padding: 48px 16px;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .page-header {
@@ -736,12 +738,14 @@ footer .attribution a:visited {
   color: white;
 }
 
-footer .attribution a:hover {
-  color: var(--color-accent);
-}
-
 footer .footer-bottom {
   margin: auto;
   font-size: 0.75rem;
   text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  footer .attribution a:hover {
+    color: var(--color-accent);
+  }
 }

@@ -16,95 +16,139 @@
   </head>
   <body>
     <div class="app-wrapper">
-      <div class="side-nav-container">
-        <nav class="side-nav">
-          <button class="nav-btn">
-            <img
-              src="../assets/menu.svg"
-              alt="menu button"
-              id="mobile-menu-btn"
-            />
-            <div class="visually-hidden">menu button</div>
-          </button>
-          <div class="nav-buttons-group">
+      <div class="app-body">
+        <div class="side-nav-container">
+          <nav class="side-nav">
             <button class="nav-btn">
-              <a href="./profile.html"
-                ><img src="../assets/profile.svg" alt="profile button" />
-                <div class="visually-hidden">profile button</div></a
-              >
+              <img
+                src="../assets/menu.svg"
+                alt="menu button"
+                id="mobile-menu-btn"
+              />
+              <div class="visually-hidden">menu button</div>
             </button>
-            <button class="nav-btn logout">
-              <img src="../assets/log-out.svg" alt="log out button" />
-              <div class="visually-hidden">log out button</div>
-            </button>
-          </div>
+            <div class="nav-buttons-group">
+              <button class="nav-btn">
+                <a href="./profile.html"
+                  ><img src="../assets/profile.svg" alt="profile button" />
+                  <div class="visually-hidden">profile button</div></a
+                >
+              </button>
+              <button class="nav-btn logout">
+                <img src="../assets/log-out.svg" alt="log out button" />
+                <div class="visually-hidden">log out button</div>
+              </button>
+            </div>
 
-          <ul class="main-nav">
-            <li><a href="./search-recipes.html">Search Recipes</a></li>
-            <li><a href="./calculate-macros.html">Calculate Macros</a></li>
-            <li class="active-page-link">Analyse Recipes</li>
-            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
-          </ul>
-          <ul class="second-nav">
-            <li><a href="./profile.html">Profile</a></li>
-            <li class="logout">Logout</li>
-          </ul>
-        </nav>
-      </div>
-      <main>
-        <header class="page-header">
-          <h1>Analyse Recipes</h1>
-          <p>Get a nutritional breakdown of any recipe.</p>
-        </header>
-        <div class="card-wrapper">
-          <article class="card">
-            <form>
-              <p class="form-instruction">
-                Enter each ingredient and its quantity from the recipe you want
-                to analyse, in a comma separated list. If you don't provide the
-                quantity, 100 grams will be used for that ingredient.
-              </p>
-              <label for="recipeToAnalyse"
-                >Recipe
-                <input
-                  type="text"
-                  id="recipeToAnalyse"
-                  class="full-width"
-                  placeholder="1lb beef brisket, 10z white onion, 3 tomatoes"
-                />
-              </label>
-              <button class="search-btn">Analyse Recipe</button>
-            </form>
-          </article>
-        </div>
-        <div class="card-wrapper nutritional-breakdown-wrapper hidden">
-          <article class="card nutritional-breakdown"></article>
-        </div>
-      </main>
-      <div
-        id="mobile-menu-modal"
-        class="mobile-menu modal-container"
-        aria-labelledby="mobile-menu-modal"
-        aria-hidden="true"
-      >
-        <div data-a11y-dialog-hide class="modal-overlay"></div>
-        <div class="mobile-menu modal-content-wrapper">
-          <button
-            type="button"
-            data-a11y-dialog-hide
-            aria-label="Close dialog"
-            id="close-mobile-menu-btn"
-          >
-            <img src="../assets/close.svg" alt="x" />
-          </button>
-          <div id="mobile-menu-content" role="document">
-            <ul id="mobile-menu">
+            <ul class="main-nav">
               <li><a href="./search-recipes.html">Search Recipes</a></li>
               <li><a href="./calculate-macros.html">Calculate Macros</a></li>
               <li class="active-page-link">Analyse Recipes</li>
               <li><a href="./saved-recipes.html">Saved Recipes</a></li>
             </ul>
+            <ul class="second-nav">
+              <li><a href="./profile.html">Profile</a></li>
+              <li class="logout">Logout</li>
+            </ul>
+          </nav>
+        </div>
+        <main>
+          <header class="page-header">
+            <h1>Analyse Recipes</h1>
+            <p>Get a nutritional breakdown of any recipe.</p>
+          </header>
+          <div class="card-wrapper">
+            <article class="card">
+              <form>
+                <p class="form-instruction">
+                  Enter each ingredient and its quantity from the recipe you
+                  want to analyse, in a comma separated list. If you don't
+                  provide the quantity, 100 grams will be used for that
+                  ingredient.
+                </p>
+                <label for="recipeToAnalyse"
+                  >Recipe
+                  <input
+                    type="text"
+                    id="recipeToAnalyse"
+                    class="full-width"
+                    placeholder="1lb beef brisket, 10z white onion, 3 tomatoes"
+                  />
+                </label>
+                <button class="search-btn">Analyse Recipe</button>
+              </form>
+            </article>
           </div>
+          <div class="card-wrapper nutritional-breakdown-wrapper hidden">
+            <article class="card nutritional-breakdown"></article>
+          </div>
+        </main>
+      </div>
+      <footer>
+        <div class="footer-content">
+          <div class="footer-content-section">
+            <div class="author">
+              <p>Developed by Daniel Howorth</p>
+              <div class="contacts">
+                <div class="contact-container">
+                  <a
+                    href="https://www.linkedin.com/in/daniel-howorth/"
+                    target="_blank"
+                    ><img src="../assets/linkedin.svg" alt="linkedin logo"
+                  /></a>
+                </div>
+                <div class="contact-container">
+                  <a href="https://github.com/daniel-howorth" target="_blank"
+                    ><img src="../assets/github.svg" alt="github logo"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-content-section">
+            <div class="attribution">
+              <p>Powered by:</p>
+              <ul>
+                <li>
+                  <a href="https://spoonacular.com/food-api" target="_blank"
+                    >Spoonacular</a
+                  >
+                </li>
+                <li>
+                  <a href="https://calorieninjas.com/" target="_blank"
+                    >CalorieNinjas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="footer-bottom">© 2024 Daniel Howorth. All Rights Reserved.</p>
+      </footer>
+    </div>
+    <div
+      id="mobile-menu-modal"
+      class="mobile-menu modal-container"
+      aria-labelledby="mobile-menu-modal"
+      aria-hidden="true"
+    >
+      <div data-a11y-dialog-hide class="modal-overlay"></div>
+      <div class="mobile-menu modal-content-wrapper">
+        <button
+          type="button"
+          data-a11y-dialog-hide
+          aria-label="Close dialog"
+          id="close-mobile-menu-btn"
+        >
+          <img src="../assets/close.svg" alt="x" />
+        </button>
+        <div id="mobile-menu-content" role="document">
+          <ul id="mobile-menu">
+            <li><a href="./search-recipes.html">Search Recipes</a></li>
+            <li><a href="./calculate-macros.html">Calculate Macros</a></li>
+            <li class="active-page-link">Analyse Recipes</li>
+            <li><a href="./saved-recipes.html">Saved Recipes</a></li>
+          </ul>
         </div>
       </div>
     </div>
