@@ -3,7 +3,7 @@ import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
-import { applyToggleContentEventListeners } from "./utils.js";
+import { applyToggleContentEventListeners, formatInput } from "./utils.js";
 import { getModal } from "./modal.js";
 
 const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
@@ -70,6 +70,7 @@ async function getRecipes(url, options) {
     const response = await fetch(url, options);
     if (response.ok) {
       const result = await response.json();
+      console.log(result.results?.[0]);
       return result.results?.[0] || "";
     } else {
       throw new Error(response.status);
@@ -78,10 +79,6 @@ async function getRecipes(url, options) {
     console.error("Fetch", error);
     window.alert("Sorry, there was a problem finding recipes.");
   }
-}
-
-function formatInput(input) {
-  return input.trim().split(" ").join("");
 }
 
 function toggleContent() {
