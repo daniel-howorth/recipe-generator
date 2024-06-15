@@ -2,6 +2,10 @@ export function isNumber(value) {
   return typeof value === "number";
 }
 
+export function formatInput(input) {
+  return input.trim().split(" ").join("");
+}
+
 export function validateInput(inputs) {
   let validStates = []; // array of true and false flags
 
