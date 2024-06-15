@@ -19,6 +19,8 @@ export const saveRecipe = async (userId, recipeData) => {
         nutrients: recipeData.nutrients,
         ingredientsList: recipeData.ingredientsList,
         instructionsList: recipeData.instructionsList,
+        sourceName: recipeData.sourceName,
+        sourceUrl: recipeData.sourceUrl,
       });
     console.log("recipe saved");
   } catch (error) {
