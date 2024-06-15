@@ -749,3 +749,9 @@ footer .footer-bottom {
     color: var(--color-accent);
   }
 }
+
+.recipe-source {
+  font-size: 0.875rem;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}

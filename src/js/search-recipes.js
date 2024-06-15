@@ -70,7 +70,6 @@ async function getRecipes(url, options) {
     const response = await fetch(url, options);
     if (response.ok) {
       const result = await response.json();
-      console.log(result.results?.[0]);
       return result.results?.[0] || "";
     } else {
       throw new Error(response.status);
