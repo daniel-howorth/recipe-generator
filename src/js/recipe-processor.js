@@ -56,6 +56,8 @@ export const cleanRecipeData = (data) => {
     servings: servings,
     ingredientsList: ingredientsList,
     instructionsList: instructionsList,
+    sourceName: data.sourceName,
+    sourceUrl: data.sourceUrl,
   };
 };
 
@@ -196,6 +198,13 @@ const getInstructionsSectionHTML = (instructionsList) => {
   return instructionsSectionHTML;
 };
 
+const getSource = (sourceName, sourceUrl) => {
+  const source = document.createElement("p");
+  source.setAttribute("class", "recipe-source");
+  source.innerHTML = `Source: <a href="${sourceUrl}" target="_blank">${sourceName}</a>`;
+  return source;
+};
+
 export const buildRecipeCard = (recipeData) => {
   const recipeCard = document.createElement("article");
   recipeCard.setAttribute("class", "recipe card");
@@ -228,11 +237,14 @@ export const buildRecipeCard = (recipeData) => {
     recipeData.instructionsList
   );
 
+  const source = getSource(recipeData.sourceName, recipeData.sourceUrl);
+
   recipeCard.appendChild(recipeImg);
   recipeCard.appendChild(recipeHeader);
   recipeCard.appendChild(nutritionalContent);
   recipeCard.appendChild(ingredientsSection);
   recipeCard.appendChild(instructionsSection);
+  recipeCard.appendChild(source);
 
   return recipeCard;
 };
