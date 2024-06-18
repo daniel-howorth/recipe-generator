@@ -4,16 +4,16 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    "ecmaVersion": 2018,
+    ecmaVersion: 2018,
   },
-  extends: [
-    "eslint:recommended",
-    "google",
-  ],
+  extends: ["eslint:recommended", "google"],
   rules: {
     "no-restricted-globals": ["error", "name", "length"],
     "prefer-arrow-callback": "error",
-    "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+    // eslint-disable-next-line quote-props
+    quotes: ["error", "double", { allowTemplateLiterals: true }],
+    "require-jsdoc": 0,
+    "object-curly-spacing": 0,
   },
   overrides: [
     {
