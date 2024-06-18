@@ -17,16 +17,8 @@ const recipeWrapper = document.querySelector(".recipe-wrapper");
 let currentRecipeData = {};
 let recipeIsSaved = "";
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
-
-const options = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": "5ade7491ccmsh53c0bf4987bab29p1d39bajsnda79064f7111",
-    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-    "Content-Type": "application/json",
-  },
-};
+const getRecipesUrl =
+  "https://europe-west2-recipe-generator-c1fdb.cloudfunctions.net/getrecipedata";
 
 searchBtn.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -34,8 +26,7 @@ searchBtn.addEventListener("click", async (event) => {
   const inputIsValid = validateInput(allInputs);
 
   if (inputIsValid) {
-    const url = buildUrl(allInputs);
-    const recipeData = await getRecipes(url, options);
+    const recipeData = await getRecipes(allInputs);
     if (recipeData) {
       const cleanedData = cleanRecipeData(recipeData);
       currentRecipeData = cleanedData;
@@ -51,46 +42,37 @@ searchBtn.addEventListener("click", async (event) => {
   }
 });
 
-function buildUrl(inputs) {
-  // random offset is generated each time buildUrl is called
-  let url = `${baseURL}&offset=${Math.floor(Math.random() * 900)}`;
+async function getRecipes(inputs) {
+  const searchTerms = [...inputs].map((input) => ({
+    key: input.id,
+    value: input.value,
+  }));
 
-  inputs.forEach((input) => {
-    if (input.value) {
-      url += `&${input.id}=${formatInput(input.value)}`;
-    }
-  });
-
-  console.log(url);
-  return url;
-}
-
-async function getRecipes(url, options) {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(getRecipesUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(searchTerms),
+    });
+
     if (response.ok) {
       const result = await response.json();
       return result.results?.[0] || "";
     } else {
-      throw new Error(response.status);
+      let errorMsg;
+      const contentType = response.headers.get("Content-Type");
+      if (contentType && contentType.includes("application/json")) {
+        errorMsg = await response.json();
+      } else {
+        errorMsg = await response.text();
+      }
+      throw new Error(errorMsg);
     }
   } catch (error) {
-    console.error("Fetch", error);
+    console.error(error.message);
     window.alert("Sorry, there was a problem finding recipes.");
+    return "";
   }
-}
-
-function toggleContent() {
-  const content = document.querySelector(`#${this.dataset.toggle}`);
-  const toggleIcon = this.querySelector("img");
-
-  if (toggleIcon.getAttribute("src").includes("chevron-down")) {
-    toggleIcon.setAttribute("src", "../../assets/chevron-up.svg");
-  } else {
-    toggleIcon.setAttribute("src", "../../assets/chevron-down.svg");
-  }
-
-  content.classList.toggle("hidden");
 }
 
 applyToggleContentEventListeners();
