@@ -2,18 +2,19 @@
 
 const functions = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
+const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");
 const cors = require("cors")({ origin: true }); // change origin when app is deployed
 const fetch = require("node-fetch");
 const { formatInput } = require("./utils");
 
-// const apiKey = functions.config().spoonacularapi.apikey;
-const apiKey = "5ade7491ccmsh53c0bf4987bab29p1d39bajsnda79064f7111";
+const spoonacularApiKey = defineSecret("SPOONACULAR_API_KEY");
+
 const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": apiKey,
+    "x-rapidapi-key": "",
     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
     "Content-Type": "application/json",
   },
@@ -33,7 +34,7 @@ function buildUrl(searchTerms) {
 }
 
 exports.getrecipedata = onRequest(
-  { region: "europe-west2", cors: true },
+  { region: "europe-west2", cors: true, secrets: [spoonacularApiKey] },
   async (req, res) => {
     if (req.method === "OPTIONS") {
       res.set("Access-Control-Allow-Origin", "*");
@@ -44,6 +45,15 @@ exports.getrecipedata = onRequest(
     }
 
     cors(req, res, async () => {
+      const apiKey = spoonacularApiKey.value();
+
+      if (!apiKey) {
+        logger.error("request attempted but API key not found");
+        res.status(500).send("500 Error: API key not found");
+      } else {
+        options.headers["x-rapidapi-key"] = apiKey;
+      }
+
       const searchTerms = req.body;
 
       if (
