@@ -11,42 +11,39 @@ const mobileMenuContainer = document.querySelector("#mobile-menu-modal");
 const mobileMenuModal = getModal(mobileMenuContainer);
 mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
-const baseURL = "https://api.calorieninjas.com/v1/";
-
-const options = {
-  method: "GET",
-  headers: {
-    "X-Api-Key": "otwN11CyK793zyZWAPVYxw==1duRAouoQBu4a844",
-    "Content-Type": "application/json",
-  },
-};
+const analyseRecipeUrl =
+  "https://europe-west2-recipe-generator-c1fdb.cloudfunctions.net/getrecipeanalysis";
 
 analyseRecipeBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const inputValue = document.querySelector("#recipeToAnalyse").value;
   if (inputValue) {
-    const url = buildUrl(inputValue);
-    const recipeData = await analyseRecipe(url, options);
+    const url = analyseRecipeUrl + `?recipeQuery=${inputValue}`;
+    const recipeData = await analyseRecipe(url);
     displayNutrition(inputValue, recipeData);
   }
 });
 
-function buildUrl(inputValue) {
-  return baseURL + "nutrition?query=" + inputValue;
-}
-
-async function analyseRecipe(url, options) {
+async function analyseRecipe(url) {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(url);
     if (response.ok) {
       const result = await response.json();
       return result;
     } else {
-      throw new Error(response.status);
+      let errorMsg;
+      const contentType = response.headers.get("Content-Type");
+      if (contentType && contentType.includes("application/json")) {
+        errorMsg = await response.json();
+      } else {
+        errorMsg = await response.text();
+      }
+      throw new Error(errorMsg);
     }
   } catch (error) {
-    console.error("Fetch", error);
-    window.alert("Sorry, there was a problem.");
+    console.error(error.message);
+    window.alert("Sorry, there was a problem analysing your recipe.");
+    return "";
   }
 }
 
@@ -106,7 +103,7 @@ function displayNutrition(inputValue, data) {
   }
 
   // if no results, display message
-  if (data.items.length === 0) {
+  if (!data.items || data.items.length === 0) {
     const noResultsMsg = `<div class="centered-text"><span>Sorry, we could not find any results.</span></div>`;
     nutritionalBreakdown.innerHTML = noResultsMsg;
     nutritionalBreakdown.scrollIntoView({ behavior: "smooth" });
