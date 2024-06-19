@@ -1,13 +1,11 @@
 /* eslint-disable */
 
 const functions = require("firebase-functions");
-const cors = require("cors")({ origin: true });
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-
+const cors = require("cors")({ origin: true }); // change origin when app is deployed
 const fetch = require("node-fetch");
-
-// const { formatInput } = require("../src/js/utils");
+const { formatInput } = require("./utils");
 
 // const apiKey = functions.config().spoonacularapi.apikey;
 const apiKey = "5ade7491ccmsh53c0bf4987bab29p1d39bajsnda79064f7111";
@@ -34,7 +32,6 @@ function buildUrl(searchTerms) {
   return url;
 }
 
-// remove cors false
 exports.getrecipedata = onRequest(
   { region: "europe-west2", cors: true },
   async (req, res) => {
@@ -48,7 +45,6 @@ exports.getrecipedata = onRequest(
 
     cors(req, res, async () => {
       const searchTerms = req.body;
-      // logger.log("The search terms:", searchTerms);
 
       if (
         !searchTerms ||
@@ -62,28 +58,24 @@ exports.getrecipedata = onRequest(
       const url = buildUrl(searchTerms);
 
       try {
-        // use logger to log the url request
+        logger.log(`sending request: ${url}`);
         const response = await fetch(url, options);
         if (response.ok) {
           const result = await response.json();
+          logger.log("request successful");
           res.status(200).json(result);
-          logger.log(result);
         } else {
           const errorDetails = await response.json().catch(() => ({}));
           throw new Error(
-            `Request failed with status ${response.status}: ${JSON.stringify(
+            `request failed with status ${response.status}: ${JSON.stringify(
               errorDetails
             )}`
           );
         }
       } catch (error) {
-        logger.log(error.message);
+        logger.error(error.message);
         res.status(500).send(error.message);
       }
     });
   }
 );
-
-function formatInput(input) {
-  return input.trim().split(" ").join("");
-}
