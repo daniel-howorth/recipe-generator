@@ -3,7 +3,7 @@ import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
-import { applyToggleContentEventListeners, formatInput } from "./utils.js";
+import { applyToggleContentEventListeners } from "./utils.js";
 import { getModal } from "./modal.js";
 
 const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
