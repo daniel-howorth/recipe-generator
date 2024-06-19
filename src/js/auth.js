@@ -5,12 +5,12 @@ import * as firebaseui from "firebaseui";
 export const uiConfig = {
   signInSuccessUrl: "search-recipes.html",
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
       signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
       requireDisplayName: false,
     },
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
 };
