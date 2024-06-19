@@ -1,3 +1,4 @@
 .DS_Store
 .prettierignore
 dist/
+node_modules
