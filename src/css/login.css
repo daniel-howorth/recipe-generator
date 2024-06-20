@@ -28,7 +28,7 @@ main {
 }
 
 #signin-card {
-  background-image: url("../../assets/signin-background.jpg");
+  background-image: url("../assets/signin-background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;

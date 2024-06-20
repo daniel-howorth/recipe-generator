@@ -70,11 +70,11 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
       </div>
       <div class="saved-recipe-action-buttons">
         <button class="view-recipe-details-btn" data-id="${savedRecipeDoc.id}">
-          <img src="../assets/view.svg" alt="eye"/>
+          <img src="./assets/view.svg" alt="eye"/>
           <div class="visually-hidden">view recipe details</div>
         </button>
         <button class="delete-btn" data-id="${savedRecipeDoc.id}">
-          <img src="../assets/delete.svg" alt="bin"/>
+          <img src="./assets/delete.svg" alt="bin"/>
           <div class="visually-hidden">delete recipe</div>
         </button>
       </div>

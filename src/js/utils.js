@@ -57,9 +57,9 @@ function toggleContent() {
   const toggleIcon = this.querySelector("img");
 
   if (toggleIcon.getAttribute("src").includes("chevron-down")) {
-    toggleIcon.setAttribute("src", "../../assets/chevron-up.svg");
+    toggleIcon.setAttribute("src", "./assets/chevron-up.svg");
   } else {
-    toggleIcon.setAttribute("src", "../../assets/chevron-down.svg");
+    toggleIcon.setAttribute("src", "./assets/chevron-down.svg");
   }
 
   content.classList.toggle("hidden");

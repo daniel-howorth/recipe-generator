@@ -81,7 +81,7 @@ function hideSearchForm() {
   document.querySelector("#nutritional-requirements").classList.add("hidden");
   document
     .querySelector("#searchFormToggleIcon")
-    .setAttribute("src", "../../assets/chevron-down.svg");
+    .setAttribute("src", "./assets/chevron-down.svg");
   window.scrollTo(0, 0);
 }
 
@@ -106,8 +106,8 @@ const buildSaveRecipeBtn = () => {
   saveButton.setAttribute("class", "save-recipe-btn");
 
   const imgSrc = recipeIsSaved
-    ? "../../assets/favourite.svg"
-    : "../../assets/favourite-border.svg";
+    ? "./assets/favourite.svg"
+    : "./assets/favourite-border.svg";
 
   saveButton.innerHTML = `
     <img src=${imgSrc} alt="heart" />
@@ -121,12 +121,12 @@ const handleSaveRecipeBtnClick = (e) => {
   if (recipeIsSaved) {
     // delete recipe from db
     deleteRecipe(getCurrentUserId(), currentRecipeData.id);
-    e.target.setAttribute("src", "../../assets/favourite-border.svg");
+    e.target.setAttribute("src", "./assets/favourite-border.svg");
     recipeIsSaved = false;
   } else {
     // save recipe to db
     saveRecipe(getCurrentUserId(), currentRecipeData);
-    e.target.setAttribute("src", "../../assets/favourite.svg");
+    e.target.setAttribute("src", "./assets/favourite.svg");
     recipeIsSaved = true;
   }
 };
