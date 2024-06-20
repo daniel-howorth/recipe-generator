@@ -34,7 +34,7 @@ function buildUrl(searchTerms) {
 }
 
 exports.getrecipedata = onRequest(
-  { region: "europe-west2", cors: true, secrets: [spoonacularApiKey] },
+  { region: "europe-west1", cors: true, secrets: [spoonacularApiKey] },
   async (req, res) => {
     if (req.method === "OPTIONS") {
       res.set("Access-Control-Allow-Origin", "*");

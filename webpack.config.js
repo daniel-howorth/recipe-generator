@@ -1,7 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  // entry points
   entry: {
     login: "./src/js/login.js",
     "search-recipes": "./src/js/search-recipes.js",
@@ -10,7 +9,6 @@ module.exports = {
     "saved-recipes": "./src/js/saved-recipes.js",
     profile: "./src/js/profile.js",
   },
-  // The location of the build folder
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
