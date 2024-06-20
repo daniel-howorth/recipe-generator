@@ -1,3 +1,6 @@
+import "../css/main.css";
+import "../css/login.css";
+
 import firebase from "./index.js";
 import { ui, uiConfig } from "./auth.js";
 

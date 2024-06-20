@@ -1,3 +1,7 @@
+import "../css/main.css";
+import "../css/analyse-recipes.css";
+import "../css/modal-styles.css";
+
 import { isNumber } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser } from "./auth.js";
