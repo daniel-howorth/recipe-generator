@@ -2,7 +2,7 @@ import { isNumber } from "./utils";
 
 export const cleanRecipeData = (data) => {
   const id = data.id.toString();
-  const image = data.image || "assets/default-recipe-image.jpg";
+  const image = data.image || "./assets/default-recipe-image.jpg";
   const title = data.title || "Recipe";
   const readyIn = data.readyInMinutes;
   const nutrients = data.nutrition?.nutrients || [];
@@ -77,7 +77,7 @@ const getRecipeHeaderHTML = (title, readyIn) => {
       readyIn
         ? `<div class="ready-in">
             <div class="visually-hidden">ready in</div>
-            <img src="../../assets/clock.svg" alt="clock" class="clock-icon" />
+            <img src="./assets/clock.svg" alt="clock" class="clock-icon" />
             <span>${readyIn} mins</span>
           </div>`
         : ""
@@ -101,7 +101,7 @@ const getRecipeNutritionHTML = ({
         data-toggle="nutritional-content"
       >
         <div class="visually-hidden">Toggle nutritional content.</div>
-        <img src="../../assets/chevron-up.svg" alt="chevron" />
+        <img src="./assets/chevron-up.svg" alt="chevron" />
       </button>
     </header>
 
@@ -145,7 +145,7 @@ const getIngredientsSectionHTML = (servings, ingredientsList) => {
         data-toggle="ingredients-content"
       >
         <div class="visually-hidden">Toggle instructions.</div>
-        <img src="../../assets/chevron-down.svg" alt="chevron" />
+        <img src="./assets/chevron-down.svg" alt="chevron" />
       </button>
     </header>
     <div class="hidden" id="ingredients-content">
@@ -177,7 +177,7 @@ const getInstructionsSectionHTML = (instructionsList) => {
         data-toggle="instructions-content"
       >
         <div class="visually-hidden">Toggle instructions.</div>
-        <img src="../../assets/chevron-down.svg" alt="chevron" />
+        <img src="./assets/chevron-down.svg" alt="chevron" />
       </button>
     </header>
     <ol class="hidden" id="instructions-content">
