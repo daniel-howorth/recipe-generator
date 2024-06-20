@@ -18,7 +18,7 @@ const options = {
 const calorieninjasApiKey = defineSecret("CALORIENINJAS_API_KEY");
 
 exports.getrecipeanalysis = onRequest(
-  { region: "europe-west2", cors: true, secrets: [calorieninjasApiKey] },
+  { region: "europe-west1", cors: true, secrets: [calorieninjasApiKey] },
   async (req, res) => {
     if (req.method === "OPTIONS") {
       res.set("Access-Control-Allow-Origin", "*");
