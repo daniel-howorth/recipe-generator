@@ -1,3 +1,7 @@
+import "../css/main.css";
+import "../css/saved-recipes.css";
+import "../css/modal-styles.css";
+
 import firebase from "./index.js";
 import { getAllSavedRecipes, deleteRecipe } from "./db.js";
 import { getCurrentUserId, signOutUser } from "./auth.js";

@@ -1,3 +1,7 @@
+import "../css/main.css";
+import "../css/calculate-macros.css";
+import "../css/modal-styles.css";
+
 import { validateInput } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser } from "./auth.js";

@@ -1,3 +1,6 @@
+import "../css/main.css";
+import "../css/modal-styles.css";
+
 import { validateInput } from "./utils.js";
 import firebase from "./index.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
