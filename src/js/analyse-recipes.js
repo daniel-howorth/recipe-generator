@@ -16,7 +16,7 @@ const mobileMenuModal = getModal(mobileMenuContainer);
 mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
 const analyseRecipeUrl =
-  "https://europe-west2-recipe-generator-c1fdb.cloudfunctions.net/getrecipeanalysis";
+  "https://europe-west1-recipe-generator-c1fdb.cloudfunctions.net/getrecipeanalysis";
 
 analyseRecipeBtn.addEventListener("click", async (e) => {
   e.preventDefault();
