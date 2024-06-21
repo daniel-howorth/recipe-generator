@@ -1,8 +1,12 @@
 import "../css/main.css";
 import "../css/modal-styles.css";
 
+import chevronDownIcon from "../assets/chevron-down.svg";
+import favouriteIcon from "../assets/favourite.svg";
+import favouriteBorderIcon from "../assets/favourite-border.svg";
+
 import { validateInput } from "./utils.js";
-import firebase from "./index.js";
+import firebase from "./firebase-config.js";
 import { signOutUser, getCurrentUserId } from "./auth.js";
 import { saveRecipe, checkSavedRecipe, deleteRecipe } from "./db.js";
 import { buildRecipeCard, cleanRecipeData } from "./recipe-processor.js";
@@ -84,7 +88,7 @@ function hideSearchForm() {
   document.querySelector("#nutritional-requirements").classList.add("hidden");
   document
     .querySelector("#searchFormToggleIcon")
-    .setAttribute("src", "./assets/chevron-down.svg");
+    .setAttribute("src", chevronDownIcon);
   window.scrollTo(0, 0);
 }
 
@@ -107,15 +111,11 @@ function displayRecipe(data) {
 const buildSaveRecipeBtn = () => {
   const saveButton = document.createElement("button");
   saveButton.setAttribute("class", "save-recipe-btn");
-
-  const imgSrc = recipeIsSaved
-    ? "./assets/favourite.svg"
-    : "./assets/favourite-border.svg";
-
-  saveButton.innerHTML = `
-    <img src=${imgSrc} alt="heart" />
-    <div class="visually-hidden">save recipe</div>
-  `;
+  const saveButtonImg = document.createElement("img");
+  saveButtonImg.src = recipeIsSaved ? favouriteIcon : favouriteBorderIcon;
+  saveButtonImg.alt = "heart";
+  saveButton.appendChild(saveButtonImg);
+  saveButton.innerHTML += `<div class="visually-hidden">save recipe</div>`;
   saveButton.addEventListener("click", handleSaveRecipeBtnClick);
   return saveButton;
 };
@@ -124,12 +124,12 @@ const handleSaveRecipeBtnClick = (e) => {
   if (recipeIsSaved) {
     // delete recipe from db
     deleteRecipe(getCurrentUserId(), currentRecipeData.id);
-    e.target.setAttribute("src", "./assets/favourite-border.svg");
+    e.target.setAttribute("src", favouriteBorderIcon);
     recipeIsSaved = false;
   } else {
     // save recipe to db
     saveRecipe(getCurrentUserId(), currentRecipeData);
-    e.target.setAttribute("src", "./assets/favourite.svg");
+    e.target.setAttribute("src", favouriteIcon);
     recipeIsSaved = true;
   }
 };

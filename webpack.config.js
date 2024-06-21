@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    login: "./src/js/login.js",
+    index: "./src/js/index.js",
     "search-recipes": "./src/js/search-recipes.js",
     "analyse-recipes": "./src/js/analyse-recipes.js",
     "calculate-macros": "./src/js/calculate-macros.js",
@@ -41,11 +41,36 @@ module.exports = {
       filename: "index.html",
       chunks: ["index"],
     }),
+    new HtmlWebpackPlugin({
+      template: "./src/search-recipes.html",
+      filename: "search-recipes.html",
+      chunks: ["search-recipes"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/analyse-recipes.html",
+      filename: "analyse-recipes.html",
+      chunks: ["analyse-recipes"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/calculate-macros.html",
+      filename: "calculate-macros.html",
+      chunks: ["calculate-macros"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/saved-recipes.html",
+      filename: "saved-recipes.html",
+      chunks: ["saved-recipes"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/profile.html",
+      filename: "profile.html",
+      chunks: ["profile"],
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
   ],
-  devServer: {
-    contentBase: "./dist",
-  },
+  // devServer: {
+  //   contentBase: "./dist",
+  // },
 };

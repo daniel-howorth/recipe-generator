@@ -1,4 +1,4 @@
-import firebase from "./index.js";
+import firebase from "./firebase-config.js";
 import "firebase/compat/auth";
 import * as firebaseui from "firebaseui";
 
@@ -11,7 +11,6 @@ export const uiConfig = {
       requireDisplayName: false,
     },
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
 };
 

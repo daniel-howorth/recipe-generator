@@ -1,4 +1,4 @@
-import firebase from "./index.js";
+import firebase from "./firebase-config.js";
 import "firebase/compat/firestore";
 
 const db = firebase.firestore();

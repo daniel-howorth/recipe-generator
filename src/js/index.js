@@ -1,14 +1,15 @@
-import firebase from "firebase/compat/app";
+import "../css/main.css";
+import "../css/login.css";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC44pe49fNHZPEFUzHFMcIKNidCGLIwEAw",
-  authDomain: "recipe-generator-c1fdb.firebaseapp.com",
-  projectId: "recipe-generator-c1fdb",
-  storageBucket: "recipe-generator-c1fdb.appspot.com",
-  messagingSenderId: "824828698274",
-  appId: "1:824828698274:web:d676710052aaccba1f41fb",
-};
+import firebase from "./firebase-config.js";
+import { ui, uiConfig } from "./auth.js";
 
-firebase.initializeApp(firebaseConfig);
+ui.start("#firebaseui-auth-container", uiConfig);
 
-export default firebase;
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("current user:", user.uid);
+  } else {
+    console.log("user is signed out");
+  }
+});

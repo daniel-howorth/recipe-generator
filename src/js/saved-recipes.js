@@ -2,7 +2,10 @@ import "../css/main.css";
 import "../css/saved-recipes.css";
 import "../css/modal-styles.css";
 
-import firebase from "./index.js";
+import viewIcon from "../assets/view.svg";
+import deleteIcon from "../assets/delete.svg";
+
+import firebase from "./firebase-config.js";
 import { getAllSavedRecipes, deleteRecipe } from "./db.js";
 import { getCurrentUserId, signOutUser } from "./auth.js";
 import { getModal, displayModalWithContent } from "./modal.js";
@@ -74,11 +77,9 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
       </div>
       <div class="saved-recipe-action-buttons">
         <button class="view-recipe-details-btn" data-id="${savedRecipeDoc.id}">
-          <img src="./assets/view.svg" alt="eye"/>
           <div class="visually-hidden">view recipe details</div>
         </button>
         <button class="delete-btn" data-id="${savedRecipeDoc.id}">
-          <img src="./assets/delete.svg" alt="bin"/>
           <div class="visually-hidden">delete recipe</div>
         </button>
       </div>
@@ -86,12 +87,24 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
   `;
 
   savedRecipeCard.innerHTML = savedRecipeCardHTML;
-  savedRecipeCard
-    .querySelector(".delete-btn")
-    .addEventListener("click", confirmRecipeDeletion);
-  savedRecipeCard
-    .querySelector(".view-recipe-details-btn")
-    .addEventListener("click", viewRecipeDetails);
+
+  const deleteBtnImg = document.createElement("img");
+  deleteBtnImg.src = deleteIcon;
+  deleteBtnImg.alt = "bin";
+
+  const savedRecipeCardDeleteBtn = savedRecipeCard.querySelector(".delete-btn");
+  savedRecipeCardDeleteBtn.prepend(deleteBtnImg);
+  savedRecipeCardDeleteBtn.addEventListener("click", confirmRecipeDeletion);
+
+  const viewBtnImg = document.createElement("img");
+  viewBtnImg.src = viewIcon;
+  viewBtnImg.alt = "eye";
+
+  const savedRecipeCardViewBtn = savedRecipeCard.querySelector(
+    ".view-recipe-details-btn"
+  );
+  savedRecipeCardViewBtn.prepend(viewBtnImg);
+  savedRecipeCardViewBtn.addEventListener("click", viewRecipeDetails);
 
   return savedRecipeCard;
 };
