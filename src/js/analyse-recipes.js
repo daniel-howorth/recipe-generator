@@ -3,7 +3,7 @@ import "../css/analyse-recipes.css";
 import "../css/modal-styles.css";
 
 import { isNumber } from "./utils.js";
-import firebase from "./index.js";
+import firebase from "./firebase-config.js";
 import { signOutUser } from "./auth.js";
 import { getModal } from "./modal.js";
 

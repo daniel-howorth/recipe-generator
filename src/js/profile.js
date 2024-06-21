@@ -2,7 +2,7 @@ import "../css/main.css";
 import "../css/profile.css";
 import "../css/modal-styles.css";
 
-import firebase from "./index.js";
+import firebase from "./firebase-config.js";
 import { signOutUser, deleteUserAccount } from "./auth";
 import { getModal, displayModalWithContent } from "./modal.js";
 

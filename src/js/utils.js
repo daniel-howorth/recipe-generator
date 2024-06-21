@@ -1,3 +1,6 @@
+import chevronUpIcon from "../assets/chevron-up.svg";
+import chevronDownIcon from "../assets/chevron-down.svg";
+
 export function isNumber(value) {
   return typeof value === "number";
 }
@@ -56,10 +59,10 @@ function toggleContent() {
   const content = document.querySelector(`#${this.dataset.toggle}`);
   const toggleIcon = this.querySelector("img");
 
-  if (toggleIcon.getAttribute("src").includes("chevron-down")) {
-    toggleIcon.setAttribute("src", "./assets/chevron-up.svg");
+  if (toggleIcon.getAttribute("src").includes(chevronDownIcon)) {
+    toggleIcon.setAttribute("src", chevronUpIcon);
   } else {
-    toggleIcon.setAttribute("src", "./assets/chevron-down.svg");
+    toggleIcon.setAttribute("src", chevronDownIcon);
   }
 
   content.classList.toggle("hidden");
