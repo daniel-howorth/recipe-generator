@@ -4,7 +4,9 @@ const functions = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");
-const cors = require("cors")({ origin: true }); // change origin when app is deployed
+const cors = require("cors")({
+  origin: "https://recipe-generator-c1fdb.web.app",
+});
 const fetch = require("node-fetch");
 const { formatInput } = require("./utils");
 
