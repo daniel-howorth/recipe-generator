@@ -25,7 +25,7 @@ let currentRecipeData = {};
 let recipeIsSaved = "";
 
 const getRecipesUrl =
-  "https://europe-west2-recipe-generator-c1fdb.cloudfunctions.net/getrecipedata";
+  "https://europe-west1-recipe-generator-c1fdb.cloudfunctions.net/getrecipedata";
 
 searchBtn.addEventListener("click", async (event) => {
   event.preventDefault();
