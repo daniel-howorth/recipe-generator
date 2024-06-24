@@ -12,7 +12,8 @@ const { formatInput } = require("./utils");
 
 const spoonacularApiKey = defineSecret("SPOONACULAR_API_KEY");
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=1`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true`;
+
 const options = {
   method: "GET",
   headers: {
@@ -23,8 +24,7 @@ const options = {
 };
 
 function buildUrl(searchTerms) {
-  // random offset is generated each time buildUrl is called
-  let url = `${baseURL}&offset=${Math.floor(Math.random() * 900)}`;
+  let url = `${baseURL}`;
 
   for (const searchTerm of searchTerms) {
     if (searchTerm.value) {
@@ -74,8 +74,11 @@ exports.getrecipedata = onRequest(
         const response = await fetch(url, options);
         if (response.ok) {
           const result = await response.json();
+          const randomRecipe = result.results
+            ? result.results[Math.floor(Math.random() * result.results.length)]
+            : "";
           logger.log("request successful");
-          res.status(200).json(result);
+          res.status(200).json([randomRecipe]);
         } else {
           const errorDetails = await response.json().catch(() => ({}));
           throw new Error(

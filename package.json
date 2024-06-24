@@ -16,6 +16,7 @@
     "@firebase/app-compat": "^0.2.35",
     "@firebase/auth-compat": "^0.5.9",
     "a11y-dialog": "^8.0.4",
+    "eslint": "^9.5.0",
     "firebase": "^10.12.2",
     "firebase-functions": "^5.0.1",
     "firebaseui": "^6.1.0"
