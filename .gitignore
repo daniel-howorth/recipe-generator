@@ -2,3 +2,4 @@
 .prettierignore
 dist/
 node_modules
+.firebase
