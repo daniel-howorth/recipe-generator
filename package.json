@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=development",
+    "clean": "rimraf dist",
+    "start": "webpack serve --mode development"
   },
   "keywords": [],
   "author": "Daniel Howorth",
@@ -23,6 +25,7 @@
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
+    "rimraf": "^5.0.7",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }

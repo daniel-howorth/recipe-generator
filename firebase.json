@@ -10,17 +10,37 @@
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
+      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
     }
   ],
   "hosting": {
     "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/search-recipes/**",
+        "destination": "/search-recipes.html"
+      },
+      {
+        "source": "/analyse-recipes/**",
+        "destination": "/analyse-recipes.html"
+      },
+      {
+        "source": "/calculate-macros/**",
+        "destination": "/calculate-macros.html"
+      },
+      {
+        "source": "/profile/**",
+        "destination": "/profile.html"
+      },
+      {
+        "source": "/saved-recipes/**",
+        "destination": "/saved-recipes.html"
+      }
     ]
   }
 }
