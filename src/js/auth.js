@@ -3,6 +3,7 @@ import "firebase/compat/auth";
 import * as firebaseui from "firebaseui";
 
 export const uiConfig = {
+  signInFlow: "popup",
   signInSuccessUrl: "search-recipes.html",
   signInOptions: [
     {
