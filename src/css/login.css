@@ -1,9 +1,15 @@
+.app-wrapper {
+  height: 100dvh;
+}
+
 main {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
   gap: 32px;
+  height: 100%;
 }
 
 #title-card {
