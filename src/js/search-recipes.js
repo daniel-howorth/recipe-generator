@@ -64,7 +64,7 @@ async function getRecipes(inputs) {
 
     if (response.ok) {
       const result = await response.json();
-      return result.results?.[0] || "";
+      return result[0] || "";
     } else {
       let errorMsg;
       const contentType = response.headers.get("Content-Type");
