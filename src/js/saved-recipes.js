@@ -81,7 +81,7 @@ const buildSavedRecipeCard = (savedRecipeDoc) => {
         </button>
         <button class="delete-btn" data-id="${savedRecipeDoc.id}">
           <div class="visually-hidden">delete recipe</div>
-        </button>
+        </button> 
       </div>
     </article>
   `;

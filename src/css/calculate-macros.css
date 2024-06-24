@@ -8,6 +8,10 @@ input {
   width: 100%;
 }
 
+select {
+  appearance: none;
+}
+
 input {
   padding: 8px 12px;
 }
