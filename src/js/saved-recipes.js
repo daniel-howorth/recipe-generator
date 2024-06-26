@@ -31,12 +31,16 @@ let deleteRecipeId = 0;
 // get and display user's saved recipes on page load
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
-    console.log("current user:", user.uid);
-    savedRecipes = await getAllSavedRecipes(user.uid);
-    if (savedRecipes.length) {
-      displaySavedRecipes(savedRecipes);
+    if (user.isAnonymous) {
+      window.location.href = "index.html";
     } else {
-      displayNoSavedRecipesMsg();
+      console.log("current user:", user.uid);
+      savedRecipes = await getAllSavedRecipes(user.uid);
+      if (savedRecipes.length) {
+        displaySavedRecipes(savedRecipes);
+      } else {
+        displayNoSavedRecipesMsg();
+      }
     }
   } else {
     window.location.href = "index.html";

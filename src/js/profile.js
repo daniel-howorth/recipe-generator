@@ -19,8 +19,12 @@ mobileMenuBtn.addEventListener("click", () => mobileMenuModal.show());
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("current user:", user.uid);
-    emailAddressValue.textContent = user.email;
+    if (user.isAnonymous) {
+      window.location.href = "index.html";
+    } else {
+      console.log("current user:", user.uid);
+      emailAddressValue.textContent = user.email;
+    }
   } else {
     window.location.href = "index.html";
   }

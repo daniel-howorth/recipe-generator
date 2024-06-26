@@ -157,7 +157,21 @@ logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("current user:", user.uid);
+    if (user.isAnonymous) {
+      console.log("current user: signed in anonymously");
+      const personalisedFeatures = document.querySelectorAll(
+        ".personalised-feature"
+      );
+      personalisedFeatures.forEach((feature) => {
+        feature.classList.add("disabled");
+        feature.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.alert("You must create an account to use this feature.");
+        });
+      });
+    } else {
+      console.log("current user:", user.uid);
+    }
   } else {
     window.location.href = "index.html";
   }
