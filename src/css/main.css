@@ -758,3 +758,7 @@ footer .footer-bottom {
   margin-top: 32px;
   margin-bottom: 16px;
 }
+
+.disabled {
+  cursor: not-allowed;
+}

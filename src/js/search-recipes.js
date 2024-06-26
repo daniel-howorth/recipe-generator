@@ -24,6 +24,8 @@ const recipeWrapper = document.querySelector(".recipe-wrapper");
 let currentRecipeData = {};
 let recipeIsSaved = "";
 
+let userIsAnonymous = null;
+
 const getRecipesUrl =
   "https://europe-west1-recipe-generator-c1fdb.cloudfunctions.net/getrecipedata";
 
@@ -101,16 +103,24 @@ function displayRecipe(data) {
   }
 
   const recipeCard = buildRecipeCard(data);
-  const saveRecipeBtn = buildSaveRecipeBtn();
-  recipeCard.appendChild(saveRecipeBtn);
+
+  if (!userIsAnonymous) {
+    const saveRecipeBtn = buildSaveRecipeBtn();
+    recipeCard.appendChild(saveRecipeBtn);
+  }
+
   recipeWrapper.appendChild(recipeCard);
 
   applyToggleContentEventListeners();
 }
 
 const buildSaveRecipeBtn = () => {
+  console.log(
+    "getting user at point of building save button: ",
+    firebase.auth().user
+  );
   const saveButton = document.createElement("button");
-  saveButton.setAttribute("class", "save-recipe-btn");
+  saveButton.classList.add("save-recipe-btn");
   const saveButtonImg = document.createElement("img");
   saveButtonImg.src = recipeIsSaved ? favouriteIcon : favouriteBorderIcon;
   saveButtonImg.alt = "heart";
@@ -153,7 +163,22 @@ logoutBtns.forEach((btn) => btn.addEventListener("click", signOutUser));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("current user:", user.uid);
+    if (user.isAnonymous) {
+      userIsAnonymous = true;
+      console.log("current user: signed in anonymously");
+      const personalisedFeatures = document.querySelectorAll(
+        ".personalised-feature"
+      );
+      personalisedFeatures.forEach((feature) => {
+        feature.classList.add("disabled");
+        feature.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.alert("You must create an account to use this feature.");
+        });
+      });
+    } else {
+      console.log("current user:", user.uid);
+    }
   } else {
     window.location.href = "index.html";
   }
