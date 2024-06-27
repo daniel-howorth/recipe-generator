@@ -5,15 +5,14 @@ const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");
 const cors = require("cors")({
-  // origin: "https://recipe-generator-c1fdb.web.app",
-  origin: "https://recipe-generator-c1fdb--preview-0jfsvisl.web.app",
+  origin: "https://recipe-generator-c1fdb.web.app",
 });
 const fetch = require("node-fetch");
 const { formatInput } = require("./utils");
 
 const spoonacularApiKey = defineSecret("SPOONACULAR_API_KEY");
 
-const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true`;
+const baseURL = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?instructionsRequired=true&addRecipeInstructions=true&addRecipeNutrition=true&fillIngredients=true&number=100`;
 
 const options = {
   method: "GET",
